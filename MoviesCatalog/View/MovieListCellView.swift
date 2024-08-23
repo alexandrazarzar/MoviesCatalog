@@ -12,26 +12,40 @@ struct MovieListCellView: View {
 
     var body: some View {
         HStack {
-            VStack(alignment: .leading) {
-                Text(viewModel.title)
-                    .bold()
+        Image("movieCover")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(maxWidth: 100, maxHeight: 150)
+                .clipped()
+        VStack(alignment: .leading) {
+            Text(viewModel.title)
+                .font(.title3)
+                .bold()
+            HStack {
+                ratingView
                 Text(viewModel.releaseDate)
             }
-            Spacer()
-            RoundedRectangle(cornerRadius: 10)
-                .fill(.blue)
-                .overlay(
-                    HStack {
-                        Image(systemName: "star.fill")
-                        Text(viewModel.voteAverage)
-                    }
-                        .foregroundColor(.white)
-                )
-                .padding()
+            .padding(.bottom)
         }
+    }
+          
+    }
+    
+    var ratingView: some View {
+        RoundedRectangle(cornerRadius: 7)
+            .fill(.gray)
+            .overlay(
+                HStack(spacing: 5) {
+                    Image(systemName: "star.fill")
+                    Text(viewModel.voteAverage)
+                }
+                    .font(.caption)
+                    .foregroundColor(.white)
+            )
+        .frame(maxWidth: 60, maxHeight: 25)
     }
 }
 
 #Preview {
-    MovieListCellView(viewModel: MovieListCellViewModel(movie: Movie(id: 1, title: "Title", voteAverage: 9.78676, runtime: nil, releaseDate: "08-08-2008", genres: nil)))
+    MovieListCellView(viewModel: MovieListCellViewModel(movie: Movie(id: 1, title: "Title", voteAverage: 9.78676, runtime: nil, releaseDate: "2008-08-08", genres: nil)))
 }
