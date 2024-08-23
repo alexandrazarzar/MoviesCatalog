@@ -27,7 +27,7 @@ struct Movie: Decodable, Hashable {
         if voteAverage > 0 {
             return String(format: "%.2f", voteAverage)
         } else {
-            return "No data"
+            return "n/a"
         }
     }
     
@@ -42,7 +42,7 @@ struct Movie: Decodable, Hashable {
            let date = dateFormatterGet.date(from: releaseDate) {
             return dateFormatterDisplay.string(from: date)
         } else {
-           return "No data"
+           return "n/a"
         }
     }
 }
