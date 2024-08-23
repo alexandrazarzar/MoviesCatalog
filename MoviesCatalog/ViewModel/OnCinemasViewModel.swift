@@ -10,8 +10,13 @@ import Foundation
 class OnCinemasViewModel: ObservableObject {
     
     @Published var movies: [Movie]?
-    @Published var error: NSError?
+    @Published var errorDescription: String = "Could not load movie list"
     
+    private let movieService: MovieService
+
+    init(movieService: MovieService = MovieService.shared) {
+        self.movieService = movieService
+    }
     
     func loadMoviesOnCinema() {
           MovieService.shared.fetchMovies() { [weak self] (result) in
@@ -21,7 +26,7 @@ class OnCinemasViewModel: ObservableObject {
                 self.movies = response.results
                 
             case .failure(let error):
-                self.error = error as NSError
+                self.errorDescription = error.description
             }
         }
     }

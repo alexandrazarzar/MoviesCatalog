@@ -15,16 +15,18 @@ struct OnCinemasView: View {
             Text("🍿 On cinemas")
                 .font(.largeTitle)
                 .fontWeight(.black)
-            List {
+            
                 if let movies = viewModel.movies {
-                    ForEach(movies, id: \.self) { movie in
-                        Text(movie.title)
+                    List {
+                        ForEach(movies, id: \.self) { movie in
+                            Text(movie.title)
+                        }
                     }
+                    .listStyle(.inset)
                 } else {
-                    Text("Could not load")
+                    Text("⚠️ \(viewModel.errorDescription)")
                 }
-            }
-            .listStyle(.inset)
+
         }
         .padding()
         .onAppear() {
