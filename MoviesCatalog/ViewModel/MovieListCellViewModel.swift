@@ -13,12 +13,14 @@ class MovieListCellViewModel: ObservableObject {
     let title: String
     let voteAverage: String
     let releaseDate: String
+    let posterURL: URL?
 
     init(movie: Movie) {
         self.movie = movie
         self.title = movie.title
         self.voteAverage = movie.formattedVoteAverage
         self.releaseDate = movie.formattedReleaseDate
+        self.posterURL = movie.posterImageEndpoint
     }
     
 }

@@ -9,26 +9,26 @@ import SwiftUI
 
 struct MovieListCellView: View {
     @ObservedObject var viewModel: MovieListCellViewModel
-
+    
     var body: some View {
         HStack {
-        Image("movieCover")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(maxWidth: 100, maxHeight: 150)
-                .clipped()
-        VStack(alignment: .leading) {
-            Text(viewModel.title)
-                .font(.title3)
-                .bold()
-            HStack {
-                ratingView
-                Text(viewModel.releaseDate)
+            moviePoster
+                .scaledToFit()
+                .containerRelativeFrame(.horizontal) { size, axis in
+                    size * 0.2
+                }
+            VStack(alignment: .leading) {
+                Text(viewModel.title)
+                    .font(.title3)
+                    .bold()
+                HStack {
+                    ratingView
+                    Text(viewModel.releaseDate)
+                }
+                .padding(.bottom)
             }
-            .padding(.bottom)
         }
-    }
-          
+        
     }
     
     var ratingView: some View {
@@ -42,10 +42,24 @@ struct MovieListCellView: View {
                     .font(.caption)
                     .foregroundColor(.white)
             )
-        .frame(maxWidth: 60, maxHeight: 25)
+            .frame(maxWidth: 60, maxHeight: 25)
+    }
+    
+    var moviePoster: some View {
+        AsyncImage(url: viewModel.posterURL) { phase in
+            if let image = phase.image {
+                image
+                    .resizable()
+            } else if phase.error != nil {
+                Image(systemName: "exclamationmark.octagon.fill")
+                    .resizable()
+            } else {
+                ProgressView()
+            }
+        }
     }
 }
 
 #Preview {
-    MovieListCellView(viewModel: MovieListCellViewModel(movie: Movie(id: 1, title: "Title", voteAverage: 9.78676, runtime: nil, releaseDate: "2008-08-08", genres: nil)))
+    MovieListCellView(viewModel: MovieListCellViewModel(movie: Movie(id: 1, title: "Title", voteAverage: 9.78676, runtime: nil, releaseDate: "2008-08-08", genres: nil, posterPath: "1E5baAaEse26fej7uHcjOgEE2t2.jpg")))
 }

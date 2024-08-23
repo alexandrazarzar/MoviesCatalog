@@ -22,6 +22,7 @@ struct Movie: Decodable, Hashable {
     let runtime: Int?
     let releaseDate: String?
     let genres: [MovieGenre]?
+    let posterPath: String
     
     var formattedVoteAverage: String {
         if voteAverage > 0 {
@@ -44,6 +45,10 @@ struct Movie: Decodable, Hashable {
         } else {
            return "n/a"
         }
+    }
+    
+    var posterImageEndpoint: URL? {
+        return URL(string: "https://image.tmdb.org/t/p/w500/\(posterPath)")
     }
 }
 
