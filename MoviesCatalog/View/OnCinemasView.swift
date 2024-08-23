@@ -19,19 +19,8 @@ struct OnCinemasView: View {
             if let movies = viewModel.movies {
                 List {
                     ForEach(movies, id: \.self) { movie in
-                        VStack(alignment: .leading) {
-                            Text(movie.title)
-                                .fontWeight(.semibold)
-                            HStack {
-                                if let releaseDate = movie.formattedReleaseDate {
-                                    Text(releaseDate)
-                                }
-                                
-                                Spacer()
-                                
-                                Text("⭐️\(movie.formattedVoteAverage)")
-                            }
-                        }
+                        let cellViewModel = MovieListCellViewModel(movie: movie)
+                        MovieListCellView(viewModel: cellViewModel)
                     }
                 }
                 .listStyle(.inset)

@@ -24,10 +24,14 @@ struct Movie: Decodable, Hashable {
     let genres: [MovieGenre]?
     
     var formattedVoteAverage: String {
-        return String(format: "%.2f", voteAverage)
+        if voteAverage > 0 {
+            return String(format: "%.2f", voteAverage)
+        } else {
+            return "No data"
+        }
     }
     
-    var formattedReleaseDate: String? {
+    var formattedReleaseDate: String {
         let dateFormatterGet = DateFormatter()
         dateFormatterGet.dateFormat = "yyyy-MM-dd"
 
@@ -38,7 +42,7 @@ struct Movie: Decodable, Hashable {
            let date = dateFormatterGet.date(from: releaseDate) {
             return dateFormatterDisplay.string(from: date)
         } else {
-           return nil
+           return "No data"
         }
     }
 }
