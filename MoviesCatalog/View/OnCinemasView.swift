@@ -19,7 +19,11 @@ struct OnCinemasView: View {
                 if let movies = viewModel.movies {
                     List {
                         ForEach(movies, id: \.self) { movie in
-                            Text(movie.title)
+                            VStack(alignment: .leading) {
+                                Text(movie.title)
+                                    .fontWeight(.semibold)
+                                Text(movie.formattedVoteAverage)
+                            }
                         }
                     }
                     .listStyle(.inset)
