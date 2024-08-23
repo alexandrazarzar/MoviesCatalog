@@ -13,10 +13,6 @@ struct MovieListCellView: View {
     var body: some View {
         HStack {
             moviePoster
-                .scaledToFit()
-                .containerRelativeFrame(.horizontal) { size, axis in
-                    size * 0.2
-                }
             VStack(alignment: .leading) {
                 Text(viewModel.title)
                     .font(.title3)
@@ -25,10 +21,8 @@ struct MovieListCellView: View {
                     ratingView
                     Text(viewModel.releaseDate)
                 }
-                .padding(.bottom)
             }
         }
-        
     }
     
     var ratingView: some View {
@@ -46,16 +40,22 @@ struct MovieListCellView: View {
     }
     
     var moviePoster: some View {
-        AsyncImage(url: viewModel.posterURL) { phase in
-            if let image = phase.image {
-                image
-                    .resizable()
-            } else if phase.error != nil {
-                Image(systemName: "exclamationmark.octagon.fill")
-                    .resizable()
-            } else {
-                ProgressView()
+        Group {
+            AsyncImage(url: viewModel.posterURL) { phase in
+                if let image = phase.image {
+                    image
+                        .resizable()
+                } else if phase.error != nil {
+                    Image(systemName: "exclamationmark.octagon.fill")
+                        .resizable()
+                } else {
+                    ProgressView()
+                }
             }
+        }
+        .scaledToFit()
+        .containerRelativeFrame(.horizontal) { size, axis in
+            size * 0.2
         }
     }
 }
