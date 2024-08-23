@@ -16,25 +16,32 @@ struct OnCinemasView: View {
                 .font(.largeTitle)
                 .fontWeight(.black)
             
-                if let movies = viewModel.movies {
-                    List {
-                        ForEach(movies, id: \.self) { movie in
-                            VStack(alignment: .leading) {
-                                Text(movie.title)
-                                    .fontWeight(.semibold)
-                                Text(movie.formattedVoteAverage)
+            if let movies = viewModel.movies {
+                List {
+                    ForEach(movies, id: \.self) { movie in
+                        VStack(alignment: .leading) {
+                            Text(movie.title)
+                                .fontWeight(.semibold)
+                            HStack {
+                                if let releaseDate = movie.formattedReleaseDate {
+                                    Text(releaseDate)
+                                }
+                                
+                                Spacer()
+                                
+                                Text("⭐️\(movie.formattedVoteAverage)")
                             }
                         }
                     }
-                    .listStyle(.inset)
-                } else {
-                    Text("⚠️ \(viewModel.errorDescription)")
                 }
-
+                .listStyle(.inset)
+            } else {
+                Text("⚠️ \(viewModel.errorDescription)")
+            }
         }
         .padding()
         .onAppear() {
-             viewModel.loadMoviesOnCinema()
+            viewModel.loadMoviesOnCinema()
         }
     }
 }
