@@ -39,7 +39,7 @@ class MovieService: GenericAPIService {
         URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
             guard let self = self else { return }
             
-            if let error = error {
+            if error != nil  {
                 self.handleFailure(.apiFailure, completion: completion)
                 return
             }
