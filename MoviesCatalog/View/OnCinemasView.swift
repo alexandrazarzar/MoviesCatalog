@@ -24,8 +24,10 @@ struct OnCinemasView: View {
                     }
                     .padding(.vertical)
                 }
+            } else if viewModel.errorDescription != nil {
+                Text("⚠️ \(String(describing: viewModel.errorDescription))")
             } else {
-                Text("⚠️ \(viewModel.errorDescription)")
+                ProgressView()
             }
         }
         .edgesIgnoringSafeArea(.bottom)

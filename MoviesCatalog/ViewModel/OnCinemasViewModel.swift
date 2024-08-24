@@ -10,7 +10,7 @@ import Foundation
 class OnCinemasViewModel: ObservableObject {
     
     @Published var movies: [Movie]?
-    @Published var errorDescription: String = "Could not load movie list"
+    @Published var errorDescription: String?
     
     private let movieService: MovieService
 
