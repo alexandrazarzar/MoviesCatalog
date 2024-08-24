@@ -14,10 +14,23 @@ struct OnCinemasView: View {
         ZStack {
             Color.appBackground
                 .ignoresSafeArea()
-        VStack(alignment: .leading) {
-            Text("🍿 On cinemas")
-                .font(.largeTitle)
-                .fontWeight(.black)
+        VStack(alignment: .leading, spacing: 0) {
+            Group {
+                HStack {
+                    Text("In Theaters now")
+                        .font(.largeTitle)
+                        .fontWeight(.black)
+                        .padding([.bottom, .leading])
+                        .foregroundColor(.black)
+                    Spacer()
+                }
+                .frame(width: UIScreen.main.bounds.width)
+//                Rectangle()
+//                    .fill(.foreground)
+//                    .frame(height: 1)
+            }
+            .background(Color.ratingView)
+            
             
             if let movies = viewModel.movies {
                 ScrollView {
