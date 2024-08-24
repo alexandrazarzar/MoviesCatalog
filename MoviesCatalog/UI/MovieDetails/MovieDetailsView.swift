@@ -35,11 +35,13 @@ struct MovieDetailsView: View {
             Text(movie.title)
                 .font(.largeTitle)
                 .bold()
-            Text(movie.releaseDate)
+            Text("Released in \(movie.releaseDate)")
+                .font(.subheadline)
             
             MoviePosterView(imageURL: movie.posterPath, relativeFrameSize: 0.5)
                 .cornerRadius(15)
                 .shadow(color: .cellShadow, radius: 10)
+                .padding()
             
             HStack {
                 ratingView(for: movie)
@@ -47,9 +49,11 @@ struct MovieDetailsView: View {
             }
             
             Text(genresText(for: movie.genres))
+                .bold()
+                .padding(.vertical)
             Text(movie.overview)
                 .multilineTextAlignment(.leading)
-                .padding()
+            Spacer()
         }
         .padding()
     }
