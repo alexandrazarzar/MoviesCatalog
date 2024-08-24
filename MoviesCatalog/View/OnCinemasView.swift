@@ -11,6 +11,9 @@ struct OnCinemasView: View {
     @ObservedObject var viewModel = OnCinemasViewModel()
     
     var body: some View {
+        ZStack {
+            Color.appBackground
+                .ignoresSafeArea()
         VStack(alignment: .leading) {
             Text("🍿 On cinemas")
                 .font(.largeTitle)
@@ -31,6 +34,7 @@ struct OnCinemasView: View {
             }
         }
         .edgesIgnoringSafeArea(.bottom)
+    }
         .onAppear() {
             viewModel.loadMoviesOnCinema()
         }
