@@ -11,7 +11,10 @@ class MovieDetailsViewModel: ObservableObject {
     @Published var movie: Movie?
     @Published var errorMessage: String?
     
-    init(movieID: Int) {
+    private let movieService: MovieService
+
+    init(movieService: MovieService = MovieService.shared, movieID: Int) {
+        self.movieService = movieService
         getMovie(byID: movieID)
     }
     

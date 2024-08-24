@@ -18,7 +18,6 @@ struct MovieDetailsView: View {
                 movieDetailsView(for: movie)
             } else if let errorMessage = viewModel.errorMessage {
                 Text("⚠️ \(errorMessage)")
-                    .foregroundColor(.red)
             } else {
                 ProgressView()
             }
@@ -37,17 +36,11 @@ struct MovieDetailsView: View {
                 .bold()
             Text("Released in \(movie.releaseDate)")
                 .font(.subheadline)
-            
-            MoviePosterView(imageURL: movie.posterPath, relativeFrameSize: 0.5)
-                .cornerRadius(15)
-                .shadow(color: .cellShadow, radius: 10)
-                .padding()
-            
+            posterView(for: movie)
             HStack {
                 ratingView(for: movie)
                 Text(movie.runtime)
             }
-            
             Text(genresText(for: movie.genres))
                 .bold()
                 .padding(.vertical)
@@ -59,29 +52,45 @@ struct MovieDetailsView: View {
     }
     
     private func posterView(for movie: Movie) -> some View {
-        MoviePosterView(imageURL: movie.posterPath, relativeFrameSize: 0.5)
-            .cornerRadius(15)
-            .shadow(color: .cellShadow, radius: 10)
+        MoviePosterView(imageURL: movie.posterPath, relativeFrameSize: Constant.posterRelativeFrameSize)
+            .cornerRadius(Constant.posterCornerRadius)
+            .shadow(color: .cellShadow, radius: Constant.posterShadowRadius)
+            .padding()
     }
     
     private func ratingView(for movie: Movie) -> some View {
-        RoundedRectangle(cornerRadius: 7)
+        RoundedRectangle(cornerRadius: Constant.ratingViewCornerRadius)
             .fill(Color.ratingView)
             .overlay(
-                HStack(spacing: 5) {
+                HStack(spacing: Constant.horizontalSpacing) {
                     Image(systemName: "star.fill")
                     Text(movie.voteAverage)
                 }
                     .font(.caption)
                     .foregroundColor(.ratingText)
             )
-            .frame(maxWidth: 60, maxHeight: 25)
+            .frame(maxWidth: Constant.ratingViewMaxWidth, maxHeight: Constant.ratingViewMaxHeight)
     }
     
     private func genresText(for genres: [String]) -> String {
         genres.joined(separator: " • ")
     }
+    
+    enum Constant {
+        static let posterRelativeFrameSize: CGFloat = 0.5
+        static let posterShadowRadius: CGFloat = 10
+        static let posterCornerRadius: CGFloat = 15
+        static let ratingViewCornerRadius: CGFloat = 7
+        static let ratingViewMaxWidth: CGFloat = 60
+        static let ratingViewMaxHeight: CGFloat = 25
+        static let horizontalSpacing: CGFloat = 5
+    }
 }
+
+#Preview {
+    MovieDetailsView(viewModel: MovieDetailsViewModel(movieID: 1022789))
+}
+
 
 #Preview {
     MovieDetailsView(viewModel: MovieDetailsViewModel(movieID: 1022789))
