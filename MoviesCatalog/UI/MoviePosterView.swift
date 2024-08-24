@@ -17,6 +17,7 @@ struct MoviePosterView: View {
                 if let image = phase.image {
                     image
                         .resizable()
+                        .cornerRadius(10)
                 } else if phase.error != nil {
                     Color.gray
                 } else {

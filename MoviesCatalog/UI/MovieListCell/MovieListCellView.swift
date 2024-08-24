@@ -14,7 +14,7 @@ struct MovieListCellView: View {
         ZStack(alignment: .leading) {
             cardWithShadow
             HStack {
-                MoviePosterView(imageURL: viewModel.posterURL, relativeFrameSize: 0.2)
+                MoviePosterView(imageURL: viewModel.posterURL, relativeFrameSize: Constants.imgRelativeFrameSize)
                 VStack(alignment: .leading) {
                     Text(viewModel.title)
                         .font(.title3)
@@ -25,19 +25,19 @@ struct MovieListCellView: View {
                     }
                 }
             }
-            .padding(10)
+            .padding(Constants.cardPadding)
         }
         .padding(.horizontal)
     }
     
     var cardWithShadow: some View {
-        RoundedRectangle(cornerRadius: 10)
+        RoundedRectangle(cornerRadius: Constants.cardCornerRadius)
             .fill(.movieCell)
-            .shadow(color: .cellShadow, radius: 3, x: 0, y: 2)
+            .shadow(color: .cellShadow, radius: Constants.cardShadowRadius)
     }
     
     var ratingView: some View {
-        RoundedRectangle(cornerRadius: 7)
+        RoundedRectangle(cornerRadius: Constants.ratingCornerRadius)
             .fill(.ratingView)
             .overlay(
                 HStack(spacing: 5) {
@@ -47,7 +47,17 @@ struct MovieListCellView: View {
                     .font(.caption)
                     .foregroundColor(.ratingText)
             )
-            .frame(maxWidth: 60, maxHeight: 25)
+            .frame(maxWidth: Constants.ratingViewMaxWidth, maxHeight: Constants.ratingViewMaxHeight)
+    }
+    
+    enum Constants {
+        static let cardCornerRadius: CGFloat = 10
+        static let cardShadowRadius: CGFloat = 3
+        static let cardPadding: CGFloat = 10
+        static let imgRelativeFrameSize: CGFloat = 0.2
+        static let ratingCornerRadius: CGFloat = 7
+        static let ratingViewMaxWidth: CGFloat = 60
+        static let ratingViewMaxHeight: CGFloat = 25
     }
 }
 

@@ -22,5 +22,4 @@ class MovieListCellViewModel: ObservableObject {
         self.releaseDate = movie.releaseDate
         self.posterURL = movie.posterPath
     }
-    
 }
