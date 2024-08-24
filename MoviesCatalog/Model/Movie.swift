@@ -22,12 +22,17 @@ struct Movie: Decodable, Hashable {
     let runtime: Int?
     let releaseDate: String?
     let genres: [MovieGenre]?
+    let posterPath: String
     
     var formattedVoteAverage: String {
-        return String(format: "%.2f", voteAverage)
+        if voteAverage > 0 {
+            return String(format: "%.2f", voteAverage)
+        } else {
+            return "n/a"
+        }
     }
     
-    var formattedReleaseDate: String? {
+    var formattedReleaseDate: String {
         let dateFormatterGet = DateFormatter()
         dateFormatterGet.dateFormat = "yyyy-MM-dd"
 
@@ -38,8 +43,12 @@ struct Movie: Decodable, Hashable {
            let date = dateFormatterGet.date(from: releaseDate) {
             return dateFormatterDisplay.string(from: date)
         } else {
-           return nil
+           return "n/a"
         }
+    }
+    
+    var posterImageEndpoint: URL? {
+        return URL(string: "https://image.tmdb.org/t/p/w500/\(posterPath)")
     }
 }
 

@@ -17,29 +17,18 @@ struct OnCinemasView: View {
                 .fontWeight(.black)
             
             if let movies = viewModel.movies {
-                List {
+                ScrollView {
                     ForEach(movies, id: \.self) { movie in
-                        VStack(alignment: .leading) {
-                            Text(movie.title)
-                                .fontWeight(.semibold)
-                            HStack {
-                                if let releaseDate = movie.formattedReleaseDate {
-                                    Text(releaseDate)
-                                }
-                                
-                                Spacer()
-                                
-                                Text("⭐️\(movie.formattedVoteAverage)")
-                            }
-                        }
+                        let cellViewModel = MovieListCellViewModel(movie: movie)
+                        MovieListCellView(viewModel: cellViewModel)
                     }
+                    .padding(.vertical)
                 }
-                .listStyle(.inset)
             } else {
                 Text("⚠️ \(viewModel.errorDescription)")
             }
         }
-        .padding()
+        .edgesIgnoringSafeArea(.bottom)
         .onAppear() {
             viewModel.loadMoviesOnCinema()
         }
