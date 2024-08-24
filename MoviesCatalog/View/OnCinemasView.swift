@@ -17,18 +17,18 @@ struct OnCinemasView: View {
                 .fontWeight(.black)
             
             if let movies = viewModel.movies {
-                List {
+                ScrollView {
                     ForEach(movies, id: \.self) { movie in
                         let cellViewModel = MovieListCellViewModel(movie: movie)
                         MovieListCellView(viewModel: cellViewModel)
                     }
+                    .padding(.vertical)
                 }
-                .listStyle(.inset)
             } else {
                 Text("⚠️ \(viewModel.errorDescription)")
             }
         }
-        .padding()
+        .edgesIgnoringSafeArea(.bottom)
         .onAppear() {
             viewModel.loadMoviesOnCinema()
         }
