@@ -12,38 +12,61 @@ struct MovieDetailsView: View {
     
     var body: some View {
         ZStack {
-            Color.appBackground
-            VStack {
-                Text(viewModel.movie.title)
-                    .font(.largeTitle)
-                    .bold()
-                Text(viewModel.movie.releaseDate)
-
-                MoviePosterView(imageURL: viewModel.movie.posterPath, relativeFrameSize: 0.5)
-                    .cornerRadius(15)
-                    .shadow(color: .cellShadow, radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
-                HStack {
-                    ratingView
-                    Text(viewModel.movie.runtime)
-                }
-                
-                Text(genresText())
-                Text(viewModel.movie.overview)
-                    .multilineTextAlignment(.center)
-                    .padding()
-
+            backgroundView
+            
+            if let movie = viewModel.movie {
+                movieDetailsView(for: movie)
+            } else if let errorMessage = viewModel.errorMessage {
+                Text("⚠️ \(errorMessage)")
+                    .foregroundColor(.red)
+            } else {
+                ProgressView()
             }
         }
-        .ignoresSafeArea()
     }
     
-    var ratingView: some View {
+    private var backgroundView: some View {
+        Color.appBackground
+            .ignoresSafeArea()
+    }
+    
+    private func movieDetailsView(for movie: Movie) -> some View {
+        VStack {
+            Text(movie.title)
+                .font(.largeTitle)
+                .bold()
+            Text(movie.releaseDate)
+            
+            MoviePosterView(imageURL: movie.posterPath, relativeFrameSize: 0.5)
+                .cornerRadius(15)
+                .shadow(color: .cellShadow, radius: 10)
+            
+            HStack {
+                ratingView(for: movie)
+                Text(movie.runtime)
+            }
+            
+            Text(genresText(for: movie.genres))
+            Text(movie.overview)
+                .multilineTextAlignment(.leading)
+                .padding()
+        }
+        .padding()
+    }
+    
+    private func posterView(for movie: Movie) -> some View {
+        MoviePosterView(imageURL: movie.posterPath, relativeFrameSize: 0.5)
+            .cornerRadius(15)
+            .shadow(color: .cellShadow, radius: 10)
+    }
+    
+    private func ratingView(for movie: Movie) -> some View {
         RoundedRectangle(cornerRadius: 7)
-            .fill(.ratingView)
+            .fill(Color.ratingView)
             .overlay(
                 HStack(spacing: 5) {
                     Image(systemName: "star.fill")
-                    Text(viewModel.movie.voteAverage)
+                    Text(movie.voteAverage)
                 }
                     .font(.caption)
                     .foregroundColor(.ratingText)
@@ -51,16 +74,11 @@ struct MovieDetailsView: View {
             .frame(maxWidth: 60, maxHeight: 25)
     }
     
-    func genresText() -> String {
-        var str = ""
-        for genre in viewModel.movie.genres {
-            str.append("\(genre) • ")
-        }
-        return str
+    private func genresText(for genres: [String]) -> String {
+        genres.joined(separator: " • ")
     }
-
 }
 
 #Preview {
-    MovieDetailsView(viewModel: MovieDetailsViewModel(movie: Movie(movieResponse: MovieResponse(id: 1, title: "Nice movie title", overview: "This is movie overview This is movie overview This is movie overview This is movie overview This is movie overview This is movie overview This is movie overview This is movie overview", voteAverage: 8.7935, releaseDate: "2008-08-08", posterPath: "1E5baAaEse26fej7uHcjOgEE2t2.jpg", runtime: 100, genres: [MovieGenre(name: "Romance")]))))
+    MovieDetailsView(viewModel: MovieDetailsViewModel(movieID: 1022789))
 }
