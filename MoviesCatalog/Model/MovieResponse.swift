@@ -26,10 +26,6 @@ struct MovieResponse: Decodable, Hashable {
     let genres: [MovieGenre]?
 }
 
-    
-
-
-
 struct MovieGenre: Decodable, Hashable {
     let name: String
 }

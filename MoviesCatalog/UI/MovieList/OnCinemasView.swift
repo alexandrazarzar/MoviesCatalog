@@ -11,43 +11,63 @@ struct OnCinemasView: View {
     @ObservedObject var viewModel = OnCinemasViewModel()
     
     var body: some View {
-        ZStack {
-            Color.appBackground
-                .ignoresSafeArea()
-        VStack(alignment: .leading, spacing: 0) {
-            Group {
-                HStack {
-                    Text("In Theaters now")
-                        .font(.largeTitle)
-                        .fontWeight(.black)
-                        .padding([.bottom, .leading])
-                        .foregroundColor(.black)
-                    Spacer()
+        NavigationStack {
+            ZStack {
+                backgroundView
+                VStack(alignment: .leading, spacing: 0) {
+                    headerView
+                    mainContent
                 }
-                .frame(width: UIScreen.main.bounds.width)
-//                Rectangle()
-//                    .fill(.foreground)
-//                    .frame(height: 1)
+                .edgesIgnoringSafeArea(.bottom)
             }
-            .background(Color.ratingView)
-            
-            
+        }
+        .tint(.ratingView)
+    }
+    
+    private var backgroundView: some View {
+        Color.appBackground
+            .ignoresSafeArea()
+    }
+    
+    private var headerView: some View {
+        HStack {
+            Text("In Theaters now")
+                .font(.largeTitle)
+                .fontWeight(.black)
+                .padding([.bottom, .leading])
+                .foregroundColor(.black)
+            Spacer()
+        }
+        .frame(width: UIScreen.main.bounds.width)
+        .background(Color.ratingView)
+    }
+    
+    private var mainContent: some View {
+        Group {
             if !viewModel.movies.isEmpty {
-                ScrollView {
-                    ForEach(viewModel.movies, id: \.self) { movie in
-                        let cellViewModel = MovieListCellViewModel(movie: movie)
-                        MovieListCellView(viewModel: cellViewModel)
-                    }
-                    .padding(.vertical)
-                }
-            } else if viewModel.errorDescription != nil {
-                Text("⚠️ \(String(describing: viewModel.errorDescription))")
+                movieListView
+            } else if let errorDescription = viewModel.errorDescription {
+                errorView(errorDescription)
             } else {
                 ProgressView()
             }
         }
-        .edgesIgnoringSafeArea(.bottom)
     }
+    
+    private var movieListView: some View {
+        ScrollView {
+            ForEach(viewModel.movies, id: \.self) { movie in
+                NavigationLink(destination: MovieDetailsView(viewModel: MovieDetailsViewModel(movieID: movie.id))) {
+                    MovieListCellView(viewModel: MovieListCellViewModel(movie: movie))
+                }
+                .buttonStyle(PlainButtonStyle())
+            }
+            .padding(.vertical)
+        }
+    }
+    
+    private func errorView(_ errorDescription: String) -> some View {
+        Text("⚠️ \(errorDescription)")
     }
 }
 

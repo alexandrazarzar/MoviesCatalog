@@ -19,7 +19,7 @@ class OnCinemasViewModel: ObservableObject {
     }
     
     func loadMoviesResponse() {
-          MovieService.shared.fetchMovies() { [weak self] (result) in
+          MovieService.shared.fetchNowPlayingMovies() { [weak self] (result) in
             guard let self = self else { return }
             switch result {
             case .success(let response):

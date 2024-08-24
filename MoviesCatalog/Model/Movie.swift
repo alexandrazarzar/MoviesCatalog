@@ -9,6 +9,7 @@ import Foundation
 
 class Movie {
     private let movieResponse: MovieResponse
+    
     var id: Int { movieResponse.id }
     var title: String { movieResponse.title }
     var overview: String { movieResponse.overview }
