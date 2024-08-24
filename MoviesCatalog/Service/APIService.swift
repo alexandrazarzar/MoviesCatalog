@@ -13,7 +13,11 @@ class APIService {
     let jsonDecoder: JSONDecoder
     private let session: URLSession
     
-    init(baseURL: String, apiKey: String, session: URLSession = .shared, jsonDecoder: JSONDecoder = JSONDecoder()) {
+    init(baseURL: String, 
+         apiKey: String,
+         session: URLSession = .shared,
+         jsonDecoder: JSONDecoder = JSONDecoder())
+    {
         self.baseURL = baseURL
         self.apiKey = apiKey
         self.session = session
