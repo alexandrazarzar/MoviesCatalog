@@ -7,18 +7,21 @@
 
 import SwiftUI
 
-struct OnCinemasView: View {
-    @ObservedObject var viewModel = OnCinemasViewModel()
+struct InTheatersView: View {
+    @ObservedObject var viewModel = InTheatersViewModel()
     
     var body: some View {
         NavigationStack {
             ZStack {
                 backgroundView
-                VStack(alignment: .leading, spacing: 0) {
-                    headerView
-                    mainContent
+                
+                if !viewModel.movies.isEmpty {
+                    inTheatersContent
+                } else if let errorDescription = viewModel.errorDescription {
+                    errorView(errorDescription)
+                } else {
+                    ProgressView()
                 }
-                .edgesIgnoringSafeArea(.bottom)
             }
         }
         .tint(.ratingView)
@@ -29,9 +32,17 @@ struct OnCinemasView: View {
             .ignoresSafeArea()
     }
     
+    private var inTheatersContent: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            headerView
+            movieListView
+        }
+        .edgesIgnoringSafeArea(.bottom)
+    }
+    
     private var headerView: some View {
         HStack {
-            Text("In Theaters now")
+            Text("In Theaters")
                 .font(.largeTitle)
                 .fontWeight(.black)
                 .padding([.bottom, .leading])
@@ -40,18 +51,6 @@ struct OnCinemasView: View {
         }
         .frame(width: UIScreen.main.bounds.width)
         .background(Color.ratingView)
-    }
-    
-    private var mainContent: some View {
-        Group {
-            if !viewModel.movies.isEmpty {
-                movieListView
-            } else if let errorDescription = viewModel.errorDescription {
-                errorView(errorDescription)
-            } else {
-                ProgressView()
-            }
-        }
     }
     
     private var movieListView: some View {
@@ -67,10 +66,12 @@ struct OnCinemasView: View {
     }
     
     private func errorView(_ errorDescription: String) -> some View {
-        Text("⚠️ \(errorDescription)")
+        VStack {
+            Text("⚠️ \(errorDescription)")
+        }
     }
 }
 
 #Preview {
-    OnCinemasView()
+    InTheatersView()
 }
