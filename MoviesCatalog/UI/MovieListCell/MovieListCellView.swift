@@ -52,6 +52,5 @@ struct MovieListCellView: View {
 }
 
 #Preview {
-    MovieListCellView(viewModel: MovieListCellViewModel(movie: Movie(id: 1, title: "Title", voteAverage: 9.78676, runtime: nil, releaseDate: "2008-08-08", genres: nil, posterPath: "1E5baAaEse26fej7uHcjOgEE2t2.jpg")))
-        .padding(.vertical, 300)
+    MovieListCellView(viewModel: MovieListCellViewModel(movie: Movie(movieResponse: MovieResponse(id: 1, title: "Title", overview: "This is movie overview", voteAverage: 8.7935, releaseDate: "2008-08-08", posterPath: "1E5baAaEse26fej7uHcjOgEE2t2.jpg", runtime: 100, genres: nil))))
 }

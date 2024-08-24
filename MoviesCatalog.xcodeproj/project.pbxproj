@@ -16,9 +16,10 @@
 		C69C93782C7810C9005EA95A /* MoviesCatalogUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69C93772C7810C9005EA95A /* MoviesCatalogUITestsLaunchTests.swift */; };
 		C69C93892C781188005EA95A /* OnCinemasViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69C93882C781188005EA95A /* OnCinemasViewModel.swift */; };
 		C69C938B2C7811A6005EA95A /* OnCinemasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69C938A2C7811A6005EA95A /* OnCinemasView.swift */; };
-		C69C938D2C7811C3005EA95A /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69C938C2C7811C3005EA95A /* Movie.swift */; };
+		C69C938D2C7811C3005EA95A /* MovieResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69C938C2C7811C3005EA95A /* MovieResponse.swift */; };
 		C69C938F2C7811DF005EA95A /* MovieService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69C938E2C7811DF005EA95A /* MovieService.swift */; };
 		C69C93922C79590F005EA95A /* MoviePosterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69C93912C79590F005EA95A /* MoviePosterView.swift */; };
+		C69C93992C7A0F0F005EA95A /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69C93982C7A0F0F005EA95A /* Movie.swift */; };
 		FA16B6C72C78D85D006C5DC3 /* MovieListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA16B6C62C78D85D006C5DC3 /* MovieListCellView.swift */; };
 		FA16B6C92C78D8DC006C5DC3 /* MovieListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA16B6C82C78D8DC006C5DC3 /* MovieListCellViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -54,9 +55,10 @@
 		C69C93772C7810C9005EA95A /* MoviesCatalogUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesCatalogUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		C69C93882C781188005EA95A /* OnCinemasViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnCinemasViewModel.swift; sourceTree = "<group>"; };
 		C69C938A2C7811A6005EA95A /* OnCinemasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnCinemasView.swift; sourceTree = "<group>"; };
-		C69C938C2C7811C3005EA95A /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		C69C938C2C7811C3005EA95A /* MovieResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieResponse.swift; sourceTree = "<group>"; };
 		C69C938E2C7811DF005EA95A /* MovieService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieService.swift; sourceTree = "<group>"; };
 		C69C93912C79590F005EA95A /* MoviePosterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePosterView.swift; sourceTree = "<group>"; };
+		C69C93982C7A0F0F005EA95A /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		FA16B6C62C78D85D006C5DC3 /* MovieListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListCellView.swift; sourceTree = "<group>"; };
 		FA16B6C82C78D8DC006C5DC3 /* MovieListCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListCellViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -149,7 +151,8 @@
 		C69C93842C78112C005EA95A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				C69C938C2C7811C3005EA95A /* Movie.swift */,
+				C69C938C2C7811C3005EA95A /* MovieResponse.swift */,
+				C69C93982C7A0F0F005EA95A /* Movie.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -327,7 +330,8 @@
 				C69C938B2C7811A6005EA95A /* OnCinemasView.swift in Sources */,
 				FA16B6C72C78D85D006C5DC3 /* MovieListCellView.swift in Sources */,
 				C69C935A2C7810C4005EA95A /* MoviesCatalogApp.swift in Sources */,
-				C69C938D2C7811C3005EA95A /* Movie.swift in Sources */,
+				C69C938D2C7811C3005EA95A /* MovieResponse.swift in Sources */,
+				C69C93992C7A0F0F005EA95A /* Movie.swift in Sources */,
 				FA16B6C92C78D8DC006C5DC3 /* MovieListCellViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

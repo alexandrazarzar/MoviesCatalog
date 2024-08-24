@@ -18,9 +18,9 @@ class MovieListCellViewModel: ObservableObject {
     init(movie: Movie) {
         self.movie = movie
         self.title = movie.title
-        self.voteAverage = movie.formattedVoteAverage
-        self.releaseDate = movie.formattedReleaseDate
-        self.posterURL = movie.posterImageEndpoint
+        self.voteAverage = movie.voteAverage
+        self.releaseDate = movie.releaseDate
+        self.posterURL = movie.posterPath
     }
     
 }

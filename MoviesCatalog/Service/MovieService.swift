@@ -28,7 +28,7 @@ class MovieService: GenericAPIService {
     }()
 
 
-    func fetchMovies(completion: @escaping (Result<MovieList, ServiceError>) -> Void) { //this func is doing a lot, implement SOLID here
+    func fetchMovies(completion: @escaping (Result<MovieListResponse, ServiceError>) -> Void) { //this func is doing a lot, implement SOLID here
         let endpoint = "\(baseURL)/movie/now_playing?api_key=\(apiKey)"
         
         guard let url = URL(string: endpoint) else {
@@ -55,7 +55,7 @@ class MovieService: GenericAPIService {
             }
             
             do {
-                let decodedResponse = try self.jsonDecoder.decode(MovieList.self, from: data)
+                let decodedResponse = try self.jsonDecoder.decode(MovieListResponse.self, from: data)
                 self.handleSuccess(decodedResponse, completion: completion)
             } catch {
                 self.handleFailure(.decodingFailure, completion: completion)

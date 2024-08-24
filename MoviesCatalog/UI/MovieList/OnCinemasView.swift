@@ -32,9 +32,9 @@ struct OnCinemasView: View {
             .background(Color.ratingView)
             
             
-            if let movies = viewModel.movies {
+            if !viewModel.movies.isEmpty {
                 ScrollView {
-                    ForEach(movies, id: \.self) { movie in
+                    ForEach(viewModel.movies, id: \.self) { movie in
                         let cellViewModel = MovieListCellViewModel(movie: movie)
                         MovieListCellView(viewModel: cellViewModel)
                     }
@@ -48,9 +48,6 @@ struct OnCinemasView: View {
         }
         .edgesIgnoringSafeArea(.bottom)
     }
-        .onAppear() {
-            viewModel.loadMoviesOnCinema()
-        }
     }
 }
 
