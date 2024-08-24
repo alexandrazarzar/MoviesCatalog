@@ -23,7 +23,7 @@ class Movie {
     }
     
     var posterPath: URL? {
-        return URL(string: "https://image.tmdb.org/t/p/w500/\(movieResponse.posterPath)")
+        return URL(string: "https://image.tmdb.org/t/p/w500\(movieResponse.posterPath)")
     }
     var runtime: String {
         return formatRuntime(movieResponse.runtime)
@@ -85,7 +85,6 @@ class Movie {
                 genresList.append(genre.name)
             }
         }
-        
         return genresList
     }
 }
