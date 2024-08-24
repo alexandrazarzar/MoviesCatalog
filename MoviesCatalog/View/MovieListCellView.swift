@@ -27,26 +27,25 @@ struct MovieListCellView: View {
             }
             .padding(10)
         }
-        .background()
         .padding(.horizontal)
     }
     
     var cardWithShadow: some View {
         RoundedRectangle(cornerRadius: 10)
-            .fill(Color.white)
-            .shadow(color: .gray, radius: 3, x: 0, y: 2)
+            .fill(.movieCell)
+            .shadow(color: .cellShadow, radius: 3, x: 0, y: 2)
     }
     
     var ratingView: some View {
         RoundedRectangle(cornerRadius: 7)
-            .fill(.gray)
+            .fill(.ratingView)
             .overlay(
                 HStack(spacing: 5) {
                     Image(systemName: "star.fill")
                     Text(viewModel.voteAverage)
                 }
                     .font(.caption)
-                    .foregroundColor(.white)
+                    .foregroundColor(.ratingText)
             )
             .frame(maxWidth: 60, maxHeight: 25)
     }
