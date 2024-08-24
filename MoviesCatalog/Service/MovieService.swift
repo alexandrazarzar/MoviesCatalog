@@ -18,7 +18,7 @@ class MovieService: MovieServiceProtocol {
     static let baseURL = "https://api.themoviedb.org/3"
     static let apiKey = "5a0326c8179306f84e506c8d3ef1522e"
     
-    private let apiService: APIService = APIService(baseURL: baseURL, apiKey: apiKey)
+    private let apiService: APIServiceProtocol = APIService(baseURL: baseURL, apiKey: apiKey)
     
     func fetchNowPlayingMovies(completion: @escaping (Result<MovieListResponse, ServiceError>) -> Void) {
         apiService.fetchData(from: "/movie/now_playing", completion: completion)

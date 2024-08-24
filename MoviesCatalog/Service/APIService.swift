@@ -7,13 +7,22 @@
 
 import Foundation
 
-class APIService {
+protocol APIServiceProtocol {
+    var baseURL: String { get }
+    var apiKey: String { get }
+    var jsonDecoder: JSONDecoder { get }
+    var session: URLSession { get }
+
+    func fetchData<T: Decodable>(from endpoint: String, completion: @escaping (Result<T, ServiceError>) -> Void)
+}
+
+class APIService: APIServiceProtocol {
     let baseURL: String
     let apiKey: String
     let jsonDecoder: JSONDecoder
-    private let session: URLSession
+    let session: URLSession
     
-    init(baseURL: String, 
+    init(baseURL: String,
          apiKey: String,
          session: URLSession = .shared,
          jsonDecoder: JSONDecoder = JSONDecoder())
