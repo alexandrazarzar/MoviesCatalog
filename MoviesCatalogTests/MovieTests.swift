@@ -9,16 +9,14 @@ import XCTest
 @testable import MoviesCatalog
 
 final class MovieTests: XCTestCase {
-    
-    var completeMovieResponse: MovieResponse!
-    var incompleteMovieResponse: MovieResponse!
+
     var completeMovie: Movie!
     var incompleteMovie: Movie!
 
     override func setUp() {
         super.setUp()
 
-        completeMovieResponse = MovieResponse(
+        let completeMovieResponse = MovieResponse(
             id: 1,
             title: "Sample Movie",
             overview: "This is a sample movie.",
@@ -29,7 +27,7 @@ final class MovieTests: XCTestCase {
             genres: [MovieGenre(name: "Action"), MovieGenre(name: "Adventure")]
         )
         
-        incompleteMovieResponse = MovieResponse(
+        let incompleteMovieResponse = MovieResponse(
             id: 1,
             title: "Sample Movie",
             overview: "This is a sample movie.",
