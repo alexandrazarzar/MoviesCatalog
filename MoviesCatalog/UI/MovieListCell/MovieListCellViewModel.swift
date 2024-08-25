@@ -23,6 +23,6 @@ class MovieListCellViewModel: ObservableObject { // sera que precisa mesmo desse
         self.voteAverage = movie.voteAverage
         self.releaseDate = movie.releaseDate
         self.posterURL = movie.posterPath
-        self.voiceOverReleaseDate = movie.voiceOverReleaseDate
+        self.voiceOverReleaseDate = movie.voiceOverFriendlyReleaseDate
     }
 }

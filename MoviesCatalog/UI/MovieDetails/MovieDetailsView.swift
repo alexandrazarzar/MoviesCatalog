@@ -33,9 +33,8 @@ struct MovieDetailsView: View {
             Text(movie.title)
                 .font(.largeTitle)
                 .bold()
-            Text("Released in \(movie.releaseDate)")
+            Text(movie.voiceOverFriendlyReleaseDate)
                 .font(.subheadline)
-                .accessibilityLabel(Text(movie.voiceOverReleaseDate))
             posterView(for: movie)
             HStack {
                 ratingView(for: movie)

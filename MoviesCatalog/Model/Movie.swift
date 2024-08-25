@@ -22,7 +22,7 @@ class Movie {
         return Utils.formatReleaseDateToDisplay(movieResponse.releaseDate)
     }
     
-    var voiceOverReleaseDate: String {
+    var voiceOverFriendlyReleaseDate: String {
         return Utils.formatReleaseDateToVoiceOver(releaseDate)
     }
     
