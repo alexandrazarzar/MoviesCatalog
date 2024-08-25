@@ -25,6 +25,9 @@ struct MovieListCellView: View {
                             .accessibilityLabel(Text(viewModel.voiceOverFriendlyReleaseDate))
                     }
                 }
+                Spacer()
+                Image(systemName: "chevron.right")
+                    .padding(.trailing)
             }
             .padding(Constants.cardPadding)
         }
