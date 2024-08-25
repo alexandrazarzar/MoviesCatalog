@@ -13,7 +13,6 @@ struct MovieDetailsView: View {
     var body: some View {
         ZStack {
             backgroundView
-            
             if let movie = viewModel.movie {
                 movieDetailsView(for: movie)
             } else if let errorMessage = viewModel.errorMessage {
@@ -36,6 +35,7 @@ struct MovieDetailsView: View {
                 .bold()
             Text("Released in \(movie.releaseDate)")
                 .font(.subheadline)
+                .accessibilityLabel(Text(movie.voiceOverReleaseDate))
             posterView(for: movie)
             HStack {
                 ratingView(for: movie)

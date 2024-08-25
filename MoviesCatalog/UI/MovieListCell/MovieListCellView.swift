@@ -22,6 +22,7 @@ struct MovieListCellView: View {
                     HStack {
                         ratingView
                         Text(viewModel.releaseDate)
+                            .accessibilityLabel(Text(viewModel.voiceOverReleaseDate))
                     }
                 }
             }

@@ -19,7 +19,11 @@ class Movie {
     }
     
     var releaseDate: String {
-        return formatReleaseDate(movieResponse.releaseDate)
+        return Utils.formatReleaseDateToDisplay(movieResponse.releaseDate)
+    }
+    
+    var voiceOverReleaseDate: String {
+        return Utils.formatReleaseDateToVoiceOver(releaseDate)
     }
     
     var posterPath: URL? {
@@ -35,26 +39,6 @@ class Movie {
     
     required init(movieResponse: MovieResponse) { // Adapter Pattern
         self.movieResponse = movieResponse
-    }
-    
-    static private var dateFormatterGet: DateFormatter {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        return dateFormatter
-    }
-    
-    static private var dateFormatterDisplay: DateFormatter {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMM dd, yyyy"
-        return dateFormatter
-    }
-    
-    private func formatReleaseDate(_ date: String) -> String {
-        if let dateStr = Movie.dateFormatterGet.date(from: date) {
-            return Movie.dateFormatterDisplay.string(from: dateStr)
-        } else {
-            return "n/a"
-        }
     }
     
     private func formatVoteAverage(_ voteAverage: Double) -> String {
