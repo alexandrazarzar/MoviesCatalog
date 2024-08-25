@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct InTheatersView: View {
-    @ObservedObject var viewModel = InTheatersViewModel()
+struct MoviesListView: View {
+    @ObservedObject var viewModel = MoviesListViewModel()
     
     var body: some View {
         NavigationStack {
@@ -73,5 +73,5 @@ struct InTheatersView: View {
 }
 
 #Preview {
-    InTheatersView()
+    MoviesListView()
 }

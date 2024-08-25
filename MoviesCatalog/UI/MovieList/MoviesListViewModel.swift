@@ -7,7 +7,7 @@
 
 import Foundation
 
-class InTheatersViewModel: ObservableObject {
+class MoviesListViewModel: ObservableObject {
     @Published var errorDescription: String?
     @Published var movies: [Movie] = []
     
