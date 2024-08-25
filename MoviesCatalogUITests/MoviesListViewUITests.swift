@@ -7,7 +7,7 @@
 
 import XCTest
 
-final class InTheatersViewUITests: XCTestCase {
+final class MoviesListViewUITests: XCTestCase {
     var app: XCUIApplication!
 
     override func setUpWithError() throws {
@@ -20,7 +20,7 @@ final class InTheatersViewUITests: XCTestCase {
         app = nil
     }
     
-    func testInTheatersView_ShowsMoviesList() throws {
+    func testMoviesListView_ShowsMoviesList() throws {
         let inTheatersText = app.staticTexts["In Theaters"]
         XCTAssertTrue(inTheatersText.exists, "The header should be visible")
         
@@ -28,7 +28,7 @@ final class InTheatersViewUITests: XCTestCase {
         XCTAssertTrue(scrollView.waitForExistence(timeout: 5), "Scroll View of movies should exist")
     }
     
-    func testInTheatersView_ShowsAMovieCell() throws {
+    func testMoviesListView_ShowsAMovieCell() throws {
         let firstNavigationLink = app.otherElements.firstMatch
         
         XCTAssertTrue(firstNavigationLink.waitForExistence(timeout: 5), "The first NavigationLink should appear in the app")
