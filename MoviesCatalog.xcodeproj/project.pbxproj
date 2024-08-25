@@ -25,6 +25,7 @@
 		C6BE2B0C2C7A989100723A97 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BE2B0B2C7A989100723A97 /* APIService.swift */; };
 		C6BE2B0E2C7A98D700723A97 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BE2B0D2C7A98D700723A97 /* ServiceError.swift */; };
 		C6BE2B1A2C7B5FC900723A97 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BE2B192C7B5FC900723A97 /* Utils.swift */; };
+		C6BE2B1F2C7B763A00723A97 /* Runtime.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BE2B1E2C7B763A00723A97 /* Runtime.swift */; };
 		FA16B6C72C78D85D006C5DC3 /* MovieListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA16B6C62C78D85D006C5DC3 /* MovieListCellView.swift */; };
 		FA16B6C92C78D8DC006C5DC3 /* MovieListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA16B6C82C78D8DC006C5DC3 /* MovieListCellViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -69,6 +70,7 @@
 		C6BE2B0B2C7A989100723A97 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		C6BE2B0D2C7A98D700723A97 /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
 		C6BE2B192C7B5FC900723A97 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		C6BE2B1E2C7B763A00723A97 /* Runtime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Runtime.swift; sourceTree = "<group>"; };
 		FA16B6C62C78D85D006C5DC3 /* MovieListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListCellView.swift; sourceTree = "<group>"; };
 		FA16B6C82C78D8DC006C5DC3 /* MovieListCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListCellViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -164,6 +166,7 @@
 			children = (
 				C69C938C2C7811C3005EA95A /* MovieResponse.swift */,
 				C69C93982C7A0F0F005EA95A /* Movie.swift */,
+				C6BE2B1E2C7B763A00723A97 /* Runtime.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -356,6 +359,7 @@
 				FA16B6C72C78D85D006C5DC3 /* MovieListCellView.swift in Sources */,
 				C69C935A2C7810C4005EA95A /* MoviesCatalogApp.swift in Sources */,
 				C6BE2B0A2C7A656400723A97 /* MovieDetailsViewModel.swift in Sources */,
+				C6BE2B1F2C7B763A00723A97 /* Runtime.swift in Sources */,
 				C6BE2B0C2C7A989100723A97 /* APIService.swift in Sources */,
 				C69C938D2C7811C3005EA95A /* MovieResponse.swift in Sources */,
 				C69C93992C7A0F0F005EA95A /* Movie.swift in Sources */,

@@ -29,8 +29,12 @@ class Movie {
     var posterPath: URL? {
         return URL(string: "https://image.tmdb.org/t/p/w500/\(movieResponse.posterPath)")
     }
-    var runtime: String {
-        return formatRuntime(movieResponse.runtime)
+    
+    var runtime: Runtime? {
+        if let totalMinutes = movieResponse.runtime {
+           return Runtime(totalMinutes: totalMinutes)
+        }
+        return nil
     }
     
     var genres: [String] {
@@ -51,14 +55,6 @@ class Movie {
     
     private func getPosterImageEndpoint(posterPath: String) -> URL? {
         return URL(string: "https://image.tmdb.org/t/p/w500/\(posterPath)")
-    }
-    
-    private func formatRuntime(_ runtime: Int?) -> String {
-        guard let runtime else { return "n/a" }
-        
-        let hours = runtime / 60
-        let minutes = runtime % 60
-        return "\(hours)h \(minutes)m"
     }
     
     private func getGenresNames(_ genres: [MovieGenre]?) -> [String] {

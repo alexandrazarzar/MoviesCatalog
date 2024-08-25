@@ -12,6 +12,20 @@ class MovieDetailsViewModel: ObservableObject {
     @Published var errorMessage: String?
     
     private let movieService: MovieService
+    
+    var voiceOverFriendlyRuntime: String {
+        if let movie = movie, let runtime = movie.runtime {
+            return runtime.voiceOverFriendlyRuntime
+        }
+        return "No runtime information available"
+    }
+    
+    var displayRuntime: String {
+        if let movie = movie, let runtime = movie.runtime {
+            return runtime.displayedRuntime
+        }
+        return "n/a"
+    }
 
     init(movieService: MovieService = MovieService.shared, 
          movieID: Int)

@@ -38,7 +38,8 @@ struct MovieDetailsView: View {
             posterView(for: movie)
             HStack {
                 ratingView(for: movie)
-                Text(movie.runtime)
+                Text(viewModel.displayRuntime)
+                    .accessibilityLabel(Text(viewModel.voiceOverFriendlyRuntime))
             }
             Text(genresText(for: movie.genres))
                 .bold()
