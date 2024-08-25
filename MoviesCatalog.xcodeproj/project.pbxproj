@@ -26,6 +26,7 @@
 		C6BE2B1A2C7B5FC900723A97 /* DateFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BE2B192C7B5FC900723A97 /* DateFormatting.swift */; };
 		C6BE2B1F2C7B763A00723A97 /* Runtime.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BE2B1E2C7B763A00723A97 /* Runtime.swift */; };
 		C6BE2B222C7B817A00723A97 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BE2B212C7B817A00723A97 /* RatingView.swift */; };
+		C6BE2B242C7B9A1600723A97 /* DateFormattingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BE2B232C7B9A1600723A97 /* DateFormattingTests.swift */; };
 		C6BE2B262C7B9E1F00723A97 /* MovieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BE2B252C7B9E1F00723A97 /* MovieTests.swift */; };
 		C6BE2B282C7BA20A00723A97 /* RuntimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BE2B272C7BA20A00723A97 /* RuntimeTests.swift */; };
 		FA16B6C72C78D85D006C5DC3 /* MovieListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA16B6C62C78D85D006C5DC3 /* MovieListCellView.swift */; };
@@ -73,6 +74,7 @@
 		C6BE2B192C7B5FC900723A97 /* DateFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatting.swift; sourceTree = "<group>"; };
 		C6BE2B1E2C7B763A00723A97 /* Runtime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Runtime.swift; sourceTree = "<group>"; };
 		C6BE2B212C7B817A00723A97 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
+		C6BE2B232C7B9A1600723A97 /* DateFormattingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormattingTests.swift; sourceTree = "<group>"; };
 		C6BE2B252C7B9E1F00723A97 /* MovieTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTests.swift; sourceTree = "<group>"; };
 		C6BE2B272C7BA20A00723A97 /* RuntimeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuntimeTests.swift; sourceTree = "<group>"; };
 		FA16B6C62C78D85D006C5DC3 /* MovieListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListCellView.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				C69C936B2C7810C9005EA95A /* MoviesCatalogTests.swift */,
+				C6BE2B232C7B9A1600723A97 /* DateFormattingTests.swift */,
 				C6BE2B252C7B9E1F00723A97 /* MovieTests.swift */,
 				C6BE2B272C7BA20A00723A97 /* RuntimeTests.swift */,
 			);
@@ -395,6 +398,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6BE2B282C7BA20A00723A97 /* RuntimeTests.swift in Sources */,
+				C6BE2B242C7B9A1600723A97 /* DateFormattingTests.swift in Sources */,
 				C69C936C2C7810C9005EA95A /* MoviesCatalogTests.swift in Sources */,
 				C6BE2B262C7B9E1F00723A97 /* MovieTests.swift in Sources */,
 			);
