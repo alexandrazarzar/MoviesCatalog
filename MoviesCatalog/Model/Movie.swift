@@ -18,12 +18,8 @@ class Movie {
         return formatVoteAverage(movieResponse.voteAverage)
     }
     
-    var releaseDate: String {
-        return Utils.formatReleaseDateToDisplay(movieResponse.releaseDate)
-    }
-    
-    var voiceOverFriendlyReleaseDate: String {
-        return Utils.formatReleaseDateToVoiceOver(releaseDate)
+    var releaseDate: Date? {
+        return DateFormatting.dateFormatterGet.date(from:  movieResponse.releaseDate)
     }
     
     var posterPath: URL? {

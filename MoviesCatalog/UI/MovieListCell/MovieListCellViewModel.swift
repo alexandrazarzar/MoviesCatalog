@@ -7,22 +7,30 @@
 
 import Foundation
 
-class MovieListCellViewModel: ObservableObject { // sera que precisa mesmo desse view model??
+class MovieListCellViewModel: ObservableObject { // TODO: sera que precisa mesmo desse view model??
     @Published var movie: Movie
-    
     let title: String
     let voteAverage: String
-    let releaseDate: String
-    let voiceOverReleaseDate: String
     let posterURL: URL?
-        
-
+    
+    var displayedReleaseDate: String {
+        if let releaseDate = movie.releaseDate {
+            return releaseDate.formatReleaseDateToDisplay()
+        }
+        return "N/A"
+    }
+    
+    var voiceOverFriendlyReleaseDate: String {
+        if let releaseDate = movie.releaseDate {
+            return releaseDate.formatReleaseDateToVoiceOver()
+        }
+        return "No release date information"
+    }
+    
     init(movie: Movie) {
         self.movie = movie
         self.title = movie.title
         self.voteAverage = movie.voteAverage
-        self.releaseDate = movie.releaseDate
         self.posterURL = movie.posterPath
-        self.voiceOverReleaseDate = movie.voiceOverFriendlyReleaseDate
     }
 }
