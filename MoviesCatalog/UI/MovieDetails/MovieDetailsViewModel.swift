@@ -12,6 +12,28 @@ class MovieDetailsViewModel: ObservableObject {
     @Published var errorMessage: String?
     
     private let movieService: MovieService
+    
+    var voiceOverFriendlyRuntime: String {
+        if let movie = movie, let runtime = movie.runtime {
+            return runtime.voiceOverFriendlyRuntime
+        }
+        return "No runtime information available"
+    }
+    
+    var displayRuntime: String {
+        if let movie = movie, let runtime = movie.runtime {
+            return runtime.displayedRuntime
+        }
+        return "n/a"
+    }
+    
+    #warning("this code is being repeted in cell view model")
+    var releaseDate: String {
+        if let movie = movie, let releaseDate = movie.releaseDate {
+            return "Released in \(releaseDate.formatReleaseDateToVoiceOver())"
+        }
+        return "No release date information"
+    }
 
     init(movieService: MovieService = MovieService.shared, 
          movieID: Int)

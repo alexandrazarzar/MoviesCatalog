@@ -13,7 +13,6 @@ struct MovieDetailsView: View {
     var body: some View {
         ZStack {
             backgroundView
-            
             if let movie = viewModel.movie {
                 movieDetailsView(for: movie)
             } else if let errorMessage = viewModel.errorMessage {
@@ -34,12 +33,13 @@ struct MovieDetailsView: View {
             Text(movie.title)
                 .font(.largeTitle)
                 .bold()
-            Text("Released in \(movie.releaseDate)")
+            Text(viewModel.releaseDate)
                 .font(.subheadline)
             posterView(for: movie)
             HStack {
-                ratingView(for: movie)
-                Text(movie.runtime)
+                RatingView(voteAverage: movie.voteAverage)
+                Text(viewModel.displayRuntime)
+                    .accessibilityLabel(Text(viewModel.voiceOverFriendlyRuntime))
             }
             Text(genresText(for: movie.genres))
                 .bold()
@@ -56,20 +56,6 @@ struct MovieDetailsView: View {
             .cornerRadius(Constant.posterCornerRadius)
             .shadow(color: .cellShadow, radius: Constant.posterShadowRadius)
             .padding()
-    }
-    
-    private func ratingView(for movie: Movie) -> some View {
-        RoundedRectangle(cornerRadius: Constant.ratingViewCornerRadius)
-            .fill(Color.ratingView)
-            .overlay(
-                HStack(spacing: Constant.horizontalSpacing) {
-                    Image(systemName: "star.fill")
-                    Text(movie.voteAverage)
-                }
-                    .font(.caption)
-                    .foregroundColor(.ratingText)
-            )
-            .frame(maxWidth: Constant.ratingViewMaxWidth, maxHeight: Constant.ratingViewMaxHeight)
     }
     
     private func genresText(for genres: [String]) -> String {

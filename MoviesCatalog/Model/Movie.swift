@@ -18,15 +18,19 @@ class Movie {
         return formatVoteAverage(movieResponse.voteAverage)
     }
     
-    var releaseDate: String {
-        return formatReleaseDate(movieResponse.releaseDate)
+    var releaseDate: Date? {
+        return DateFormatting.dateFormatterGet.date(from:  movieResponse.releaseDate)
     }
     
     var posterPath: URL? {
         return URL(string: "https://image.tmdb.org/t/p/w500/\(movieResponse.posterPath)")
     }
-    var runtime: String {
-        return formatRuntime(movieResponse.runtime)
+    
+    var runtime: Runtime? {
+        if let totalMinutes = movieResponse.runtime {
+           return Runtime(totalMinutes: totalMinutes)
+        }
+        return nil
     }
     
     var genres: [String] {
@@ -35,26 +39,6 @@ class Movie {
     
     required init(movieResponse: MovieResponse) { // Adapter Pattern
         self.movieResponse = movieResponse
-    }
-    
-    static private var dateFormatterGet: DateFormatter {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        return dateFormatter
-    }
-    
-    static private var dateFormatterDisplay: DateFormatter {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMM dd, yyyy"
-        return dateFormatter
-    }
-    
-    private func formatReleaseDate(_ date: String) -> String {
-        if let dateStr = Movie.dateFormatterGet.date(from: date) {
-            return Movie.dateFormatterDisplay.string(from: dateStr)
-        } else {
-            return "n/a"
-        }
     }
     
     private func formatVoteAverage(_ voteAverage: Double) -> String {
@@ -67,14 +51,6 @@ class Movie {
     
     private func getPosterImageEndpoint(posterPath: String) -> URL? {
         return URL(string: "https://image.tmdb.org/t/p/w500/\(posterPath)")
-    }
-    
-    private func formatRuntime(_ runtime: Int?) -> String {
-        guard let runtime else { return "n/a" }
-        
-        let hours = runtime / 60
-        let minutes = runtime % 60
-        return "\(hours)h \(minutes)m"
     }
     
     private func getGenresNames(_ genres: [MovieGenre]?) -> [String] {
