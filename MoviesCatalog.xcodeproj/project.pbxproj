@@ -26,6 +26,7 @@
 		C6BE2B1A2C7B5FC900723A97 /* DateFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BE2B192C7B5FC900723A97 /* DateFormatting.swift */; };
 		C6BE2B1F2C7B763A00723A97 /* Runtime.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BE2B1E2C7B763A00723A97 /* Runtime.swift */; };
 		C6BE2B222C7B817A00723A97 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BE2B212C7B817A00723A97 /* RatingView.swift */; };
+		C6BE2B262C7B9E1F00723A97 /* MovieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BE2B252C7B9E1F00723A97 /* MovieTests.swift */; };
 		FA16B6C72C78D85D006C5DC3 /* MovieListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA16B6C62C78D85D006C5DC3 /* MovieListCellView.swift */; };
 		FA16B6C92C78D8DC006C5DC3 /* MovieListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA16B6C82C78D8DC006C5DC3 /* MovieListCellViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -71,6 +72,7 @@
 		C6BE2B192C7B5FC900723A97 /* DateFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatting.swift; sourceTree = "<group>"; };
 		C6BE2B1E2C7B763A00723A97 /* Runtime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Runtime.swift; sourceTree = "<group>"; };
 		C6BE2B212C7B817A00723A97 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
+		C6BE2B252C7B9E1F00723A97 /* MovieTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTests.swift; sourceTree = "<group>"; };
 		FA16B6C62C78D85D006C5DC3 /* MovieListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListCellView.swift; sourceTree = "<group>"; };
 		FA16B6C82C78D8DC006C5DC3 /* MovieListCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListCellViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -147,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				C69C936B2C7810C9005EA95A /* MoviesCatalogTests.swift */,
+				C6BE2B252C7B9E1F00723A97 /* MovieTests.swift */,
 			);
 			path = MoviesCatalogTests;
 			sourceTree = "<group>";
@@ -389,6 +392,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C69C936C2C7810C9005EA95A /* MoviesCatalogTests.swift in Sources */,
+				C6BE2B262C7B9E1F00723A97 /* MovieTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
