@@ -42,9 +42,9 @@ struct MoviesListView: View {
     
     private var headerView: some View {
         HStack {
-            Text("🍿 In Theaters")
+            Label("In Theaters", systemImage: "popcorn")
                 .font(.largeTitle)
-                .fontWeight(.black)
+                .fontWeight(.semibold)
                 .padding([.bottom, .leading])
                 .foregroundColor(.white)
             Spacer()
