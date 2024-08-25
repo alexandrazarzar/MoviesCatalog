@@ -13,7 +13,9 @@ class MovieDetailsViewModel: ObservableObject {
     
     private let movieService: MovieService
 
-    init(movieService: MovieService = MovieService.shared, movieID: Int) {
+    init(movieService: MovieService = MovieService.shared, 
+         movieID: Int)
+    {
         self.movieService = movieService
         getMovie(byID: movieID)
     }

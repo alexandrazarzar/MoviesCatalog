@@ -91,7 +91,3 @@ struct MovieDetailsView: View {
     MovieDetailsView(viewModel: MovieDetailsViewModel(movieID: 1022789))
 }
 
-
-#Preview {
-    MovieDetailsView(viewModel: MovieDetailsViewModel(movieID: 1022789))
-}
