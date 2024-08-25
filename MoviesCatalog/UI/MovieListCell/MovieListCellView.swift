@@ -42,12 +42,14 @@ struct MovieListCellView: View {
             .overlay(
                 HStack(spacing: 5) {
                     Image(systemName: "star.fill")
+                        .accessibilityLabel(Text("rating"))
                     Text(viewModel.voteAverage)
                 }
                     .font(.caption)
                     .foregroundColor(.ratingText)
             )
             .frame(maxWidth: Constants.ratingViewMaxWidth, maxHeight: Constants.ratingViewMaxHeight)
+            .accessibilityElement(children: .combine)
     }
     
     enum Constants {
