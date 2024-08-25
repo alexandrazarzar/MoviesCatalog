@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MoviesListView: View {
     @ObservedObject var viewModel = MoviesListViewModel()
-    
+
     var body: some View {
         NavigationStack {
             ZStack {
@@ -24,7 +24,7 @@ struct MoviesListView: View {
                 }
             }
         }
-        .tint(.ratingView)
+        .tint(.cinemaRed)
     }
     
     private var backgroundView: some View {
@@ -42,15 +42,15 @@ struct MoviesListView: View {
     
     private var headerView: some View {
         HStack {
-            Text("In Theaters")
+            Text("🍿 In Theaters")
                 .font(.largeTitle)
                 .fontWeight(.black)
                 .padding([.bottom, .leading])
-                .foregroundColor(.black)
+                .foregroundColor(.white)
             Spacer()
         }
         .frame(width: UIScreen.main.bounds.width)
-        .background(Color.ratingView)
+        .background(.cinemaRed)
     }
     
     private var movieListView: some View {

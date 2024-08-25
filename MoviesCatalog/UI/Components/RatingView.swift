@@ -12,7 +12,7 @@ struct RatingView: View {
     
     var body: some View {
         RoundedRectangle(cornerRadius: Constants.Numbers.ratingCornerRadius)
-            .fill(.ratingView)
+            .fill(.cinemaRed)
             .overlay(
                 HStack(spacing: Constants.Numbers.spaceFromIconToText) {
                     Image(systemName: "star.fill")
@@ -20,7 +20,7 @@ struct RatingView: View {
                     Text(voteAverage)
                 }
                     .font(.caption)
-                    .foregroundColor(.ratingText)
+                    .foregroundColor(.white)
             )
             .frame(maxWidth: Constants.Numbers.ratingViewMaxWidth, maxHeight: Constants.Numbers.ratingViewMaxHeight)
             .accessibilityElement(children: .combine)
