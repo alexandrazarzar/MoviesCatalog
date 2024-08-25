@@ -37,7 +37,7 @@ struct MovieDetailsView: View {
                 .font(.subheadline)
             posterView(for: movie)
             HStack {
-                ratingView(for: movie)
+                RatingView(voteAverage: movie.voteAverage)
                 Text(viewModel.displayRuntime)
                     .accessibilityLabel(Text(viewModel.voiceOverFriendlyRuntime))
             }
@@ -56,20 +56,6 @@ struct MovieDetailsView: View {
             .cornerRadius(Constant.posterCornerRadius)
             .shadow(color: .cellShadow, radius: Constant.posterShadowRadius)
             .padding()
-    }
-    
-    private func ratingView(for movie: Movie) -> some View {
-        RoundedRectangle(cornerRadius: Constant.ratingViewCornerRadius)
-            .fill(Color.ratingView)
-            .overlay(
-                HStack(spacing: Constant.horizontalSpacing) {
-                    Image(systemName: "star.fill")
-                    Text(movie.voteAverage)
-                }
-                    .font(.caption)
-                    .foregroundColor(.ratingText)
-            )
-            .frame(maxWidth: Constant.ratingViewMaxWidth, maxHeight: Constant.ratingViewMaxHeight)
     }
     
     private func genresText(for genres: [String]) -> String {

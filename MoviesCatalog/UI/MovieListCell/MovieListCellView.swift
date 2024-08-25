@@ -20,9 +20,11 @@ struct MovieListCellView: View {
                         .font(.title3)
                         .bold()
                     HStack {
-                        ratingView
+                        RatingView(voteAverage: viewModel.voteAverage)
                         Text(viewModel.displayedReleaseDate)
-                            .accessibilityLabel(Text(viewModel.voiceOverFriendlyReleaseDate))
+                            .accessibilityLabel(
+                                Text(viewModel.voiceOverFriendlyReleaseDate)
+                            )
                     }
                 }
             }
@@ -37,30 +39,11 @@ struct MovieListCellView: View {
             .shadow(color: .cellShadow, radius: Constants.cardShadowRadius)
     }
     
-    var ratingView: some View {
-        RoundedRectangle(cornerRadius: Constants.ratingCornerRadius)
-            .fill(.ratingView)
-            .overlay(
-                HStack(spacing: 5) {
-                    Image(systemName: "star.fill")
-                        .accessibilityLabel(Text("rating"))
-                    Text(viewModel.voteAverage)
-                }
-                    .font(.caption)
-                    .foregroundColor(.ratingText)
-            )
-            .frame(maxWidth: Constants.ratingViewMaxWidth, maxHeight: Constants.ratingViewMaxHeight)
-            .accessibilityElement(children: .combine)
-    }
-    
     enum Constants {
         static let cardCornerRadius: CGFloat = 10
         static let cardShadowRadius: CGFloat = 3
         static let cardPadding: CGFloat = 10
         static let imgRelativeFrameSize: CGFloat = 0.2
-        static let ratingCornerRadius: CGFloat = 7
-        static let ratingViewMaxWidth: CGFloat = 60
-        static let ratingViewMaxHeight: CGFloat = 25
     }
 }
 
