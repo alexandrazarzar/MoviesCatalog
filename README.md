@@ -22,6 +22,8 @@
 - Supports Dark Mode;
 
 ## Future Improvements
+- Unit tests for API services
+- Add more UI tests and test error cases
 
 
 

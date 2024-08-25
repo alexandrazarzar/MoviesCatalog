@@ -33,6 +33,7 @@ struct MovieDetailsView: View {
             Text(movie.title)
                 .font(.largeTitle)
                 .bold()
+                .accessibilityIdentifier("MovieTitle")
             Text(viewModel.releaseDate)
                 .font(.subheadline)
             posterView(for: movie)
