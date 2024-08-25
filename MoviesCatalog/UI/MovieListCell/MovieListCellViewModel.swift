@@ -22,7 +22,7 @@ class MovieListCellViewModel: ObservableObject { // TODO: sera que precisa mesmo
     
     var voiceOverFriendlyReleaseDate: String {
         if let releaseDate = movie.releaseDate {
-            return releaseDate.formatReleaseDateToVoiceOver()
+            return "Released in \(releaseDate.formatReleaseDateToVoiceOver())"
         }
         return "No release date information"
     }

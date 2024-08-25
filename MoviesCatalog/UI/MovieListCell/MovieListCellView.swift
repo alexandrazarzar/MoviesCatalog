@@ -22,9 +22,7 @@ struct MovieListCellView: View {
                     HStack {
                         RatingView(voteAverage: viewModel.voteAverage)
                         Text(viewModel.displayedReleaseDate)
-                            .accessibilityLabel(
-                                Text(viewModel.voiceOverFriendlyReleaseDate)
-                            )
+                            .accessibilityLabel(Text(viewModel.voiceOverFriendlyReleaseDate))
                     }
                 }
             }
