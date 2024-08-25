@@ -33,7 +33,7 @@ struct MovieDetailsView: View {
             Text(movie.title)
                 .font(.largeTitle)
                 .bold()
-            Text(movie.voiceOverFriendlyReleaseDate)
+            Text(viewModel.releaseDate)
                 .font(.subheadline)
             posterView(for: movie)
             HStack {

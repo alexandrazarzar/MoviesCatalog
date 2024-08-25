@@ -26,6 +26,14 @@ class MovieDetailsViewModel: ObservableObject {
         }
         return "n/a"
     }
+    
+    #warning("this code is being repeted in cell view model")
+    var releaseDate: String {
+        if let movie = movie, let releaseDate = movie.releaseDate {
+            return "Released in \(releaseDate.formatReleaseDateToVoiceOver())"
+        }
+        return "No release date information"
+    }
 
     init(movieService: MovieService = MovieService.shared, 
          movieID: Int)
