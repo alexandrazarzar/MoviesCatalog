@@ -14,31 +14,54 @@ class MovieDetailsViewModel: ObservableObject {
     private let movieService: MovieService
     private let analyticService: AnalyticService
     
-    var voiceOverFriendlyRuntime: String {
-        if let movie = movie, let runtime = movie.runtime {
-            return runtime.voiceOverFriendlyRuntime
-        }
-        return "No runtime information available"
-    }
-    
-    var displayRuntime: String {
-        if let movie = movie, let runtime = movie.runtime {
-            return runtime.displayedRuntime
-        }
-        return "n/a"
+    var movieTitle: String {
+        movie?.title ?? "Unknown Title"
     }
     
     var releaseDate: String {
-        if let movie = movie, let releaseDate = movie.releaseDate {
+        if let releaseDate = movie?.releaseDate {
             return "Released in \(releaseDate.formatReleaseDateToVoiceOver())"
         }
         return "No release date information"
     }
     
+    var posterURL: URL? {
+        movie?.posterPath
+    }
+    
+    var voteAverage: String {
+        movie?.voteAverage ?? "n/a"
+    }
+    
+    var displayRuntime: String {
+        if let runtime = movie?.runtime {
+            return runtime.displayedRuntime
+        }
+        return "n/a"
+    }
+    
+    var voiceOverFriendlyRuntime: String {
+        if let runtime = movie?.runtime {
+            return runtime.voiceOverFriendlyRuntime
+        }
+        return "No runtime information available"
+    }
+    
+    var genresText: String {
+        if let genres = movie?.genres {
+            return genres.joined(separator: " • ")
+        }
+        return "No genre information available"
+    }
+    
+    var overview: String {
+        movie?.overview ?? "No overview available"
+    }
+    
     init(movieService: MovieService = MovieService.shared,
          analyticService: AnalyticService = AnalyticService.shared,
          movieID: Int
-    ){
+    ) {
         self.movieService = movieService
         self.analyticService = analyticService
         getMovie(byID: movieID)
@@ -62,3 +85,4 @@ class MovieDetailsViewModel: ObservableObject {
         analyticService.registerEvent(page: "\(movieTitle) details view", action: "ViewAppear")
     }
 }
+

@@ -13,8 +13,9 @@ struct MovieDetailsView: View {
     var body: some View {
         ZStack {
             backgroundView
+            
             if let movie = viewModel.movie {
-                movieDetailsView(for: movie)
+                movieDetailsContent(for: movie)
             } else if let errorMessage = viewModel.errorMessage {
                 ErrorView(errorMessage)
             } else {
@@ -31,42 +32,59 @@ struct MovieDetailsView: View {
             .ignoresSafeArea()
     }
     
-    private func movieDetailsView(for movie: Movie) -> some View {
+    private func movieDetailsContent(for movie: Movie) -> some View {
         VStack {
-            Text(movie.title)
-                .font(.largeTitle)
-                .bold()
-                .accessibilityIdentifier("MovieTitle")
-            Text(viewModel.releaseDate)
-                .font(.subheadline)
+            movieTitle
+            releaseDate
             posterView(for: movie)
-            HStack {
-                RatingView(voteAverage: movie.voteAverage)
-                Text(viewModel.displayRuntime)
-                    .accessibilityLabel(Text(viewModel.voiceOverFriendlyRuntime))
-            }
-            Text(genresText(for: movie.genres))
-                .bold()
-                .padding(.vertical)
-            Text(movie.overview)
-                .multilineTextAlignment(.leading)
+            ratingsAndRuntime
+            genres
+            overview
             Spacer()
         }
         .padding()
     }
     
+    private var movieTitle: some View {
+        Text(viewModel.movie?.title ?? "")
+            .font(.largeTitle)
+            .bold()
+            .accessibilityIdentifier("MovieTitle")
+    }
+    
+    private var releaseDate: some View {
+        Text(viewModel.releaseDate)
+            .font(.subheadline)
+    }
+    
     private func posterView(for movie: Movie) -> some View {
-        MoviePosterView(imageURL: movie.posterPath, relativeFrameSize: Constant.posterRelativeFrameSize)
-            .cornerRadius(Constant.posterCornerRadius)
-            .shadow(color: .cellShadow, radius: Constant.posterShadowRadius)
+        MoviePosterView(imageURL: movie.posterPath,
+                        relativeFrameSize: MovieDetailsConstants.posterRelativeFrameSize)
+            .cornerRadius(MovieDetailsConstants.posterCornerRadius)
+            .shadow(color: .cellShadow, radius: MovieDetailsConstants.posterShadowRadius)
             .padding()
     }
     
-    private func genresText(for genres: [String]) -> String {
-        genres.joined(separator: " • ")
+    private var ratingsAndRuntime: some View {
+        HStack {
+            RatingView(voteAverage: viewModel.movie?.voteAverage ?? "n/a")
+            Text(viewModel.displayRuntime)
+                .accessibilityLabel(Text(viewModel.voiceOverFriendlyRuntime))
+        }
     }
     
-    enum Constant {
+    private var genres: some View {
+        Text(viewModel.genresText)
+            .bold()
+            .padding(.vertical)
+    }
+    
+    private var overview: some View {
+        Text(viewModel.movie?.overview ?? "")
+            .multilineTextAlignment(.leading)
+    }
+    
+    struct MovieDetailsConstants {
         static let posterRelativeFrameSize: CGFloat = 0.5
         static let posterShadowRadius: CGFloat = 10
         static let posterCornerRadius: CGFloat = 15
@@ -76,8 +94,3 @@ struct MovieDetailsView: View {
         static let horizontalSpacing: CGFloat = 5
     }
 }
-
-#Preview {
-    MovieDetailsView(viewModel: MovieDetailsViewModel(movieID: 1022789))
-}
-
