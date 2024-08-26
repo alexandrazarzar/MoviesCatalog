@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MoviesListView: View {
-    @ObservedObject var viewModel = MoviesListViewModel()
+    @ObservedObject var viewModel: MoviesListViewModel
     
     var body: some View {
         NavigationStack {
@@ -45,14 +45,17 @@ struct MoviesListView: View {
     
     private var headerView: some View {
         HStack {
-            Label("In Theaters", systemImage: "popcorn")
+            Label(
+                Constants.Text.header,
+                systemImage: Constants.Image.popcorn
+            )
                 .font(.largeTitle)
                 .fontWeight(.semibold)
                 .padding([.bottom, .leading])
                 .foregroundColor(.white)
             Spacer()
         }
-        .frame(width: UIScreen.main.bounds.width)
+        .frame(width: .infinity)
         .background(.cinemaRed)
     }
     
