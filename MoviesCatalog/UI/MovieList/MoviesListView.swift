@@ -37,26 +37,10 @@ struct MoviesListView: View {
     
     private var inTheatersContent: some View {
         VStack(alignment: .leading, spacing: 0) {
-            headerView
+            HeaderView(headerText: Constants.Text.header)
             movieListView
         }
         .edgesIgnoringSafeArea(.bottom)
-    }
-    
-    private var headerView: some View {
-        HStack {
-            Label(
-                Constants.Text.header,
-                systemImage: Constants.Image.popcorn
-            )
-                .font(.largeTitle)
-                .fontWeight(.semibold)
-                .padding([.bottom, .leading])
-                .foregroundColor(.white)
-            Spacer()
-        }
-        .frame(width: .infinity)
-        .background(.cinemaRed)
     }
     
     private var movieListView: some View {
@@ -80,10 +64,6 @@ struct MoviesListView: View {
     enum Constants {
         enum Text {
             static let header = "In Theaters"
-        }
-        
-        enum Image {
-            static let popcorn = "popcorn"
         }
     }
 }

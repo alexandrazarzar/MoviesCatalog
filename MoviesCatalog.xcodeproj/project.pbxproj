@@ -24,6 +24,10 @@
 		C6B57E0F2C7C0FFB00E9E498 /* AnalyticService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B57E0E2C7C0FFB00E9E498 /* AnalyticService.swift */; };
 		C6B57E132C7C1B9F00E9E498 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6B57E122C7C1B9F00E9E498 /* Launch Screen.storyboard */; };
 		C6B57E152C7C290000E9E498 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B57E142C7C290000E9E498 /* ErrorView.swift */; };
+		C6B57E172C7C9F5700E9E498 /* WatchedMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B57E162C7C9F5700E9E498 /* WatchedMovie.swift */; };
+		C6B57E192C7CB11100E9E498 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B57E182C7CB11100E9E498 /* ContentView.swift */; };
+		C6B57E1B2C7CB14400E9E498 /* WatchedMoviesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B57E1A2C7CB14400E9E498 /* WatchedMoviesList.swift */; };
+		C6B57E1D2C7CC80400E9E498 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B57E1C2C7CC80400E9E498 /* HeaderView.swift */; };
 		C6BE2B072C7A60A000723A97 /* MovieDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BE2B062C7A60A000723A97 /* MovieDetailsView.swift */; };
 		C6BE2B0A2C7A656400723A97 /* MovieDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BE2B092C7A656300723A97 /* MovieDetailsViewModel.swift */; };
 		C6BE2B0C2C7A989100723A97 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BE2B0B2C7A989100723A97 /* APIService.swift */; };
@@ -78,6 +82,10 @@
 		C6B57E0E2C7C0FFB00E9E498 /* AnalyticService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticService.swift; sourceTree = "<group>"; };
 		C6B57E122C7C1B9F00E9E498 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		C6B57E142C7C290000E9E498 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		C6B57E162C7C9F5700E9E498 /* WatchedMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchedMovie.swift; sourceTree = "<group>"; };
+		C6B57E182C7CB11100E9E498 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C6B57E1A2C7CB14400E9E498 /* WatchedMoviesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchedMoviesList.swift; sourceTree = "<group>"; };
+		C6B57E1C2C7CC80400E9E498 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		C6BE2B062C7A60A000723A97 /* MovieDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsView.swift; sourceTree = "<group>"; };
 		C6BE2B092C7A656300723A97 /* MovieDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewModel.swift; sourceTree = "<group>"; };
 		C6BE2B0B2C7A989100723A97 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
@@ -149,6 +157,7 @@
 				C69C93592C7810C4005EA95A /* MoviesCatalogApp.swift */,
 				C69C935D2C7810C8005EA95A /* Assets.xcassets */,
 				C69C935F2C7810C8005EA95A /* MoviesCatalog.entitlements */,
+				C6B57E122C7C1B9F00E9E498 /* Launch Screen.storyboard */,
 				C69C93602C7810C8005EA95A /* Preview Content */,
 			);
 			path = MoviesCatalog;
@@ -189,6 +198,7 @@
 				C69C938C2C7811C3005EA95A /* MovieResponse.swift */,
 				C69C93982C7A0F0F005EA95A /* Movie.swift */,
 				C6BE2B1E2C7B763A00723A97 /* Runtime.swift */,
+				C6B57E162C7C9F5700E9E498 /* WatchedMovie.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -196,11 +206,12 @@
 		C69C93852C781134005EA95A /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				C6B57E182C7CB11100E9E498 /* ContentView.swift */,
+				C6B57E1A2C7CB14400E9E498 /* WatchedMoviesList.swift */,
 				C6BE2B202C7B815E00723A97 /* Components */,
 				C69C93932C79FB5A005EA95A /* MovieList */,
 				C69C93942C79FB78005EA95A /* MovieListCell */,
 				C6BE2B082C7A64A100723A97 /* MovieDetails */,
-				C6B57E122C7C1B9F00E9E498 /* Launch Screen.storyboard */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -266,6 +277,7 @@
 				C69C93912C79590F005EA95A /* MoviePosterView.swift */,
 				C6BE2B212C7B817A00723A97 /* RatingView.swift */,
 				C6B57E142C7C290000E9E498 /* ErrorView.swift */,
+				C6B57E1C2C7CC80400E9E498 /* HeaderView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -404,6 +416,8 @@
 			files = (
 				C69C938F2C7811DF005EA95A /* MovieService.swift in Sources */,
 				C69C93922C79590F005EA95A /* MoviePosterView.swift in Sources */,
+				C6B57E192C7CB11100E9E498 /* ContentView.swift in Sources */,
+				C6B57E1B2C7CB14400E9E498 /* WatchedMoviesList.swift in Sources */,
 				C6B57E152C7C290000E9E498 /* ErrorView.swift in Sources */,
 				C6BE2B072C7A60A000723A97 /* MovieDetailsView.swift in Sources */,
 				C69C93892C781188005EA95A /* MoviesListViewModel.swift in Sources */,
@@ -411,6 +425,7 @@
 				C6BE2B1A2C7B5FC900723A97 /* DateFormatting.swift in Sources */,
 				C69C938B2C7811A6005EA95A /* MoviesListView.swift in Sources */,
 				FA16B6C72C78D85D006C5DC3 /* MovieListCellView.swift in Sources */,
+				C6B57E172C7C9F5700E9E498 /* WatchedMovie.swift in Sources */,
 				C69C935A2C7810C4005EA95A /* MoviesCatalogApp.swift in Sources */,
 				C6BE2B0A2C7A656400723A97 /* MovieDetailsViewModel.swift in Sources */,
 				C6B57E0F2C7C0FFB00E9E498 /* AnalyticService.swift in Sources */,
@@ -420,6 +435,7 @@
 				C69C938D2C7811C3005EA95A /* MovieResponse.swift in Sources */,
 				C69C93992C7A0F0F005EA95A /* Movie.swift in Sources */,
 				C6BE2B0E2C7A98D700723A97 /* ServiceError.swift in Sources */,
+				C6B57E1D2C7CC80400E9E498 /* HeaderView.swift in Sources */,
 				FA16B6C92C78D8DC006C5DC3 /* MovieListCellViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
