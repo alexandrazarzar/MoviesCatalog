@@ -12,6 +12,7 @@ class MovieDetailsViewModel: ObservableObject {
     @Published var errorMessage: String?
     
     private let movieService: MovieService
+    private let analyticService: AnalyticService
     
     var voiceOverFriendlyRuntime: String {
         if let movie = movie, let runtime = movie.runtime {
@@ -27,18 +28,19 @@ class MovieDetailsViewModel: ObservableObject {
         return "n/a"
     }
     
-    #warning("this code is being repeted in cell view model")
     var releaseDate: String {
         if let movie = movie, let releaseDate = movie.releaseDate {
             return "Released in \(releaseDate.formatReleaseDateToVoiceOver())"
         }
         return "No release date information"
     }
-
-    init(movieService: MovieService = MovieService.shared, 
-         movieID: Int)
-    {
+    
+    init(movieService: MovieService = MovieService.shared,
+         analyticService: AnalyticService = AnalyticService.shared,
+         movieID: Int
+    ){
         self.movieService = movieService
+        self.analyticService = analyticService
         getMovie(byID: movieID)
     }
     
@@ -53,5 +55,10 @@ class MovieDetailsViewModel: ObservableObject {
                 }
             }
         }
+    }
+    
+    func onMovieDetailsAppear() {
+        let movieTitle = movie?.title ?? "Movie"
+        analyticService.registerEvent(page: "\(movieTitle) details view", action: "ViewAppear")
     }
 }

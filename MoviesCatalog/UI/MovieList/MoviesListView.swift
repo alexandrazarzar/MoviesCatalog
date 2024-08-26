@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MoviesListView: View {
     @ObservedObject var viewModel = MoviesListViewModel()
-
+    
     var body: some View {
         NavigationStack {
             ZStack {
@@ -23,6 +23,9 @@ struct MoviesListView: View {
                     ProgressView()
                 }
             }
+            .onAppear(perform: {
+                viewModel.onViewAppear()
+            })
         }
         .tint(.cinemaRed)
     }
@@ -56,9 +59,15 @@ struct MoviesListView: View {
     private var movieListView: some View {
         ScrollView {
             ForEach(viewModel.movies, id: \.self) { movie in
-                NavigationLink(destination: MovieDetailsView(viewModel: MovieDetailsViewModel(movieID: movie.id))) {
+                let detailsViewModel = MovieDetailsViewModel(movieID: movie.id)
+                let detailsView = MovieDetailsView(viewModel: detailsViewModel)
+                
+                NavigationLink(destination: detailsView) {
                     MovieListCellView(viewModel: MovieListCellViewModel(movie: movie))
                 }
+                .simultaneousGesture(TapGesture().onEnded {
+                    viewModel.onMovieCellTapped()
+                })
                 .buttonStyle(PlainButtonStyle())
             }
             .padding(.vertical)

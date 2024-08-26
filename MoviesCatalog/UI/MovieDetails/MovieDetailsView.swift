@@ -21,6 +21,9 @@ struct MovieDetailsView: View {
                 ProgressView()
             }
         }
+        .onAppear {
+            viewModel.onMovieDetailsAppear()
+        }
     }
     
     private var backgroundView: some View {

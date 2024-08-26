@@ -12,9 +12,13 @@ class MoviesListViewModel: ObservableObject {
     @Published var movies: [Movie] = []
     
     private let movieService: MovieService
+    private let analyticService: AnalyticService
 
-    init(movieService: MovieService = MovieService.shared) {
+    init(movieService: MovieService = MovieService.shared,
+         analyticService: AnalyticService = AnalyticService.shared
+    ) {
         self.movieService = movieService
+        self.analyticService = analyticService
         loadMovies()
     }
     
@@ -28,6 +32,14 @@ class MoviesListViewModel: ObservableObject {
                 self.errorDescription = error.description
             }
         }
+    }
+    
+    func onViewAppear() {
+        analyticService.registerEvent(page: "In theaters movie list", action: "ViewAppear")
+    }
+    
+    func onMovieCellTapped() {
+        analyticService.registerEvent(page: "In theaters movie list", action: "MovieCellTapped")
     }
 }
 
