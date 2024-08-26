@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct MovieDetailsView: View {
     @ObservedObject var viewModel: MovieDetailsViewModel
-    
+    @Environment(\.modelContext) private var modelContext
+
     var body: some View {
         ZStack {
             backgroundView
@@ -41,6 +43,7 @@ struct MovieDetailsView: View {
             genres
             overview
             Spacer()
+            watchedButton
         }
         .padding()
     }
@@ -82,6 +85,18 @@ struct MovieDetailsView: View {
     private var overview: some View {
         Text(viewModel.movie?.overview ?? "")
             .multilineTextAlignment(.leading)
+    }
+    
+    private var watchedButton: some View {
+        Button(action: {
+            modelContext.insert(WatchedMovie(movieID: viewModel.movie?.title ?? ""))
+
+        }) {
+            Text("Register in journal")
+                .foregroundColor(.white)
+                .cornerRadius(10)
+                .background(.blue)
+        }
     }
     
     struct MovieDetailsConstants {
