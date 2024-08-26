@@ -15,11 +15,14 @@ protocol MovieServiceProtocol {
 class MovieService: MovieServiceProtocol {
     static let shared = MovieService()
     
-    static let baseURL = "https://api.themoviedb.org/3"
-    static let apiKey = "5a0326c8179306f84e506c8d3ef1522e"
+    private let apiService: APIServiceProtocol
     
-    private let apiService: APIServiceProtocol = APIService(baseURL: baseURL, apiKey: apiKey)
-    
+    init(apiService: APIServiceProtocol = APIService(baseURL: Config.shared.baseURL, 
+                                                     apiKey: Config.shared.apiKey))
+    {
+        self.apiService = apiService
+    }
+        
     func fetchNowPlayingMovies(completion: @escaping (Result<MovieListResponse, ServiceError>) -> Void) {
         apiService.fetchData(from: "/movie/now_playing", completion: completion)
     }
