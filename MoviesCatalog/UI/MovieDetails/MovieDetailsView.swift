@@ -35,33 +35,33 @@ struct MovieDetailsView: View {
     }
     
     private func movieDetailsContent(for movie: Movie) -> some View {
-        VStack(spacing: 10) {
-            movieTitle
-            releaseDate
+        VStack {
+            titleAndReleaseDate(for: movie)
+            ratingsAndRuntime(for: movie)
             posterView(for: movie)
-            ratingsAndRuntime
-            genres
-            overview
             watchedButton(for: movie)
+            genres
+            overview(for: movie)
+            Spacer()
         }
         .padding()
     }
     
-    private var movieTitle: some View {
-        Text(viewModel.movie?.title ?? "")
-            .font(.largeTitle)
-            .bold()
-            .accessibilityIdentifier("MovieTitle")
+    private func titleAndReleaseDate(for movie: Movie) -> some View {
+        VStack {
+            Text(movie.title)
+                .font(.largeTitle)
+                .bold()
+                .accessibilityIdentifier("MovieTitle")
+                Text(viewModel.releaseDate)
+                    .font(.subheadline)
+        }
+        .padding(.bottom)
     }
     
-    private var releaseDate: some View {
-        Text(viewModel.releaseDate)
-            .font(.subheadline)
-    }
-    
-    private var ratingsAndRuntime: some View {
+    private func ratingsAndRuntime(for movie: Movie) -> some View {
         HStack {
-            RatingView(voteAverage: viewModel.movie?.voteAverage ?? "n/a")
+            RatingView(voteAverage: movie.voteAverage)
             Text(viewModel.displayRuntime)
                 .accessibilityLabel(Text(viewModel.voiceOverFriendlyRuntime))
         }
@@ -69,10 +69,12 @@ struct MovieDetailsView: View {
     
     private var genres: some View {
         Text(viewModel.genresText)
-        .bold()    }
+            .fontWeight(.heavy)
+            .padding(.top)
+    }
     
-    private var overview: some View {
-        Text(viewModel.movie?.overview ?? "")
+    private func overview(for movie: Movie) -> some View {
+        Text(movie.overview)
             .multilineTextAlignment(.leading)
     }
     
@@ -81,6 +83,7 @@ struct MovieDetailsView: View {
             modelContext.insert(WatchedMovie(movieID: movie.title))
         }) {
             Text(Constants.Text.registerButtonText)
+                .font(.caption)
         }
         .buttonStyle(.bordered)
     }
@@ -90,7 +93,6 @@ struct MovieDetailsView: View {
                         relativeFrameSize: Constants.Numbers.posterRelativeFrameSize)
         .cornerRadius(Constants.Numbers.posterCornerRadius)
         .shadow(color: .cellShadow, radius: Constants.Numbers.posterShadowRadius)
-        .padding()
     }
     
     struct Constants {
