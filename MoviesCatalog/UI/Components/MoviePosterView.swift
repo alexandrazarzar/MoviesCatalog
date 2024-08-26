@@ -15,19 +15,24 @@ struct MoviePosterView: View {
         ZStack {
             AsyncImage(url: imageURL) { phase in
                 if let image = phase.image {
-                    image
-                        .resizable()
-                        .cornerRadius(10)
+                    image.resizable()
                 } else if phase.error != nil {
                     Color.gray
                 } else {
                     ProgressView()
                 }
             }
+            .cornerRadius(Constants.Numbers.cornerRadius)
         }
         .scaledToFit()
         .containerRelativeFrame(.horizontal) { size, axis in
             size * relativeFrameSize
+        }
+    }
+    
+    enum Constants {
+        enum Numbers {
+            static let cornerRadius: CGFloat = 10
         }
     }
 }

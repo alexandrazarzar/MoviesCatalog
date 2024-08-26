@@ -15,14 +15,15 @@ struct RatingView: View {
             .fill(.cinemaRed)
             .overlay(
                 HStack(spacing: Constants.Numbers.spaceFromIconToText) {
-                    Image(systemName: "star.fill")
+                    Image(systemName: Constants.Image.starIcon)
                         .accessibilityLabel(Text(Constants.Accessibility.iconAccessibilityLabel))
                     Text(voteAverage)
                 }
                     .font(.caption)
                     .foregroundColor(.white)
             )
-            .frame(maxWidth: Constants.Numbers.ratingViewMaxWidth, maxHeight: Constants.Numbers.ratingViewMaxHeight)
+            .frame(maxWidth: Constants.Numbers.ratingViewMaxWidth,
+                   maxHeight: Constants.Numbers.ratingViewMaxHeight)
             .accessibilityElement(children: .combine)
     }
     
@@ -35,7 +36,7 @@ struct RatingView: View {
         }
         
         enum Image {
-            static let starIco = "star.fill"
+            static let starIcon = "star.fill"
         }
         
         enum Accessibility {
