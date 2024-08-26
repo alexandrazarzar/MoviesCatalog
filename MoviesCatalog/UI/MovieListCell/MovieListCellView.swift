@@ -13,34 +13,56 @@ struct MovieListCellView: View {
     var body: some View {
         ZStack(alignment: .leading) {
             cardWithShadow
-            HStack {
-                MoviePosterView(imageURL: viewModel.posterURL, relativeFrameSize: Constants.imgRelativeFrameSize)
-                VStack(alignment: .leading) {
-                    Text(viewModel.title)
-                        .font(.title3)
-                        .bold()
-                    HStack {
-                        RatingView(voteAverage: viewModel.voteAverage)
-                        Text(viewModel.displayedReleaseDate)
-                            .accessibilityLabel(Text(viewModel.voiceOverFriendlyReleaseDate))
-                    }
-                }
-                Spacer()
-                Image(systemName: "chevron.right")
-                    .padding(.trailing)
-            }
-            .padding(Constants.cardPadding)
+            content
         }
         .padding(.horizontal)
     }
     
-    var cardWithShadow: some View {
-        RoundedRectangle(cornerRadius: Constants.cardCornerRadius)
-            .fill(.movieCell)
-            .shadow(color: .cellShadow, radius: Constants.cardShadowRadius)
+    private var content: some View {
+        HStack {
+            posterView
+            movieDetails
+            Spacer()
+            chevronIcon
+        }
+        .padding(Constants.Numbers.cardPadding)
     }
     
-    enum Constants {
+    private var posterView: some View {
+        MoviePosterView(imageURL: viewModel.posterURL, relativeFrameSize: Constants.Numbers.imgRelativeFrameSize)
+    }
+    
+    private var movieDetails: some View {
+        VStack(alignment: .leading) {
+            Text(viewModel.title)
+                .font(.title3)
+                .bold()
+            HStack {
+                RatingView(voteAverage: viewModel.voteAverage)
+                Text(viewModel.displayedReleaseDate)
+                    .accessibilityLabel(Text(viewModel.voiceOverFriendlyReleaseDate))
+            }
+        }
+    }
+    
+    private var chevronIcon: some View {
+        Image(systemName: Constants.Image.chevronRight)
+            .padding(.trailing)
+    }
+    
+    private var cardWithShadow: some View {
+        RoundedRectangle(cornerRadius: Constants.Numbers.cardCornerRadius)
+            .fill(.movieCell)
+            .shadow(color: .cellShadow, radius: Constants.Numbers.cardShadowRadius)
+    }
+}
+
+struct Constants {
+    enum Image {
+        static let chevronRight = "chevron.right"
+    }
+    
+    enum Numbers {
         static let cardCornerRadius: CGFloat = 10
         static let cardShadowRadius: CGFloat = 3
         static let cardPadding: CGFloat = 10
