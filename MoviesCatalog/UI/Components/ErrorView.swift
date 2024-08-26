@@ -37,5 +37,5 @@ struct ErrorView: View {
 }
 
 #Preview {
-    ErrorView(errorDescription: "This is an error")
+    ErrorView("This is an error")
 }
