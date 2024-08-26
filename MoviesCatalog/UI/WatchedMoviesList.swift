@@ -14,19 +14,28 @@ struct WatchedMoviesList: View {
     @Query private var movies: [WatchedMovie]
     
     var body: some View {
-        List {
-            ForEach(movies, id: \.self) { movie in
-                HStack {
-                    Text(movie.title)
-                    Spacer()
-                    Text(movie.watchedDate.formatReleaseDateToDisplay())
-                        .foregroundColor(.gray)
+        VStack(spacing: 0) {
+            HeaderView(headerText: Constants.Text.header)
+            List {
+                ForEach(movies, id: \.self) { movie in
+                    HStack {
+                        Text(movie.title)
+                        Spacer()
+                        Text(movie.watchedDate.formatReleaseDateToDisplay())
+                            .foregroundColor(.gray)
+                    }
                 }
+                .onDelete(perform: { offsets in
+                    let movieToDelete = movies[offsets.first ?? 0]
+                    modelContext.delete(movieToDelete)
+                })
             }
-            .onDelete(perform: { offsets in
-                let movieToDelete = movies[offsets.first ?? 0]
-                modelContext.delete(movieToDelete)
-            })
+        }
+    }
+    
+    enum Constants {
+        enum Text {
+            static let header = "My movie journal"
         }
     }
 }
