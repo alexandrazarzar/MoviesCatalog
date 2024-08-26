@@ -18,7 +18,7 @@ struct MoviesListView: View {
                 if !viewModel.movies.isEmpty {
                     inTheatersContent
                 } else if let errorDescription = viewModel.errorDescription {
-                    errorView(errorDescription)
+                    ErrorView(errorDescription)
                 } else {
                     ProgressView()
                 }
@@ -74,13 +74,17 @@ struct MoviesListView: View {
         }
     }
     
-    private func errorView(_ errorDescription: String) -> some View {
-        VStack {
-            Text("⚠️ \(errorDescription)")
+    enum Constants {
+        enum Text {
+            static let header = "In Theaters"
+        }
+        
+        enum Image {
+            static let popcorn = "popcorn"
         }
     }
 }
 
 #Preview {
-    MoviesListView()
+    MoviesListView(viewModel: MoviesListViewModel())
 }

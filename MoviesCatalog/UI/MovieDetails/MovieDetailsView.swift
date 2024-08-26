@@ -16,7 +16,7 @@ struct MovieDetailsView: View {
             if let movie = viewModel.movie {
                 movieDetailsView(for: movie)
             } else if let errorMessage = viewModel.errorMessage {
-                Text("⚠️ \(errorMessage)")
+                ErrorView(errorMessage)
             } else {
                 ProgressView()
             }
