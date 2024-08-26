@@ -26,7 +26,9 @@
 ## Future Improvements
 - Unit tests for API services;
 - Add more UI tests and test error cases;
-- Generate real usage analytics.
+- Generate real usage analytics;
+- Support different languages;
+- Add tab of watched movies and storage user info.
 
 
 
