@@ -18,12 +18,15 @@
 - MVVM architectural pattern, which ensures a clear separation of concerns and makes the app easier to maintain and test;
 - Usage of design patterns such as Singleton, Adapter, Dependency Injection, Composite and Observer.
 - Unit tests using XCTest;
+- UI tests using XCTest;
+- Simulates analytics service;
 - Accessibility labels;
-- Supports Dark Mode;
+- Supports Dark Mode.
 
 ## Future Improvements
-- Unit tests for API services
-- Add more UI tests and test error cases
+- Unit tests for API services;
+- Add more UI tests and test error cases;
+- Generate real usage analytics.
 
 
 
